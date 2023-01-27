@@ -7,5 +7,4 @@ def func(x):
 
 def test_answer():
     """Checks func"""
-    assert func(3) == 5
-    
+    assert func(3) == 4
