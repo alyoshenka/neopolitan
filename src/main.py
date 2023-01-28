@@ -2,6 +2,8 @@
 Main
 """
 
+import time
+
 # ToDo: fix this
 # pylint: disable=import-error
 from board_functions.display import Display

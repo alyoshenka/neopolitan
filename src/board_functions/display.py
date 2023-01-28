@@ -47,9 +47,15 @@ class Display:
         """Loop until 'esc' or quit"""
         for event in pygame.event.get():
             # ToDo
-        # pylint: disable=no-member
+            # pylint: disable=no-member
             if event.type == pygame.QUIT:
                 self.should_exit = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.board.turn_on(0)
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    self.board.turn_off(0)
         self.draw()
         pygame.display.update()
         return self.should_exit

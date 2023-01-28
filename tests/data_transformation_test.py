@@ -22,4 +22,6 @@ def test_symbol_to_array():
     a_array = [0,0,0,0,0,1,0,0, 0,0,1,0,1,0,1,0, 0,0,1,0,1,0,1,0, 0,0,0,1,1,1,1,0]
     assert symbol_to_array(a, color=1, off=0) == a_array, 'Data array does not match expected'
 
+    # Todo: more tests?
+
     
