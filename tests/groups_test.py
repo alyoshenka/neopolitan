@@ -10,7 +10,6 @@ from src.writing.groups_8 import *
 
 
 
-
 def test_all_letters_used():
     """Tests that all defined symbols are put into a group"""
     len_groups = len(uppercase) + len(lowercase) + len(symbols) + len(numbers)

@@ -1,8 +1,11 @@
 """Displays a graphical representation of the LED board"""
 
 import pygame
+<<<<<<< HEAD
 # Todo
 # pylint: disable=import-error
+=======
+>>>>>>> main
 from board_functions.board_display import BoardDisplay
 
 class Display:
@@ -25,13 +28,20 @@ class Display:
         self.size = size
         self.space = space
 
+<<<<<<< HEAD
         self.board_display = BoardDisplay(board, cols, rows)       
+=======
+        self.boardDisplay = BoardDisplay(board, cols, rows)       
+>>>>>>> main
         self.init_pygame()
 
     def init_pygame(self):
         """Initialize pygame"""
+<<<<<<< HEAD
         # ToDo
         # pylint: disable=no-member
+=======
+>>>>>>> main
         pygame.init()
         self.screen = pygame.display.set_mode((self.width, self.height))
         # pygame.display.set_caption('stock board simulator')
@@ -41,11 +51,16 @@ class Display:
     def draw(self):
         """Main draw loop"""
         self.screen.fill(self.background)
+<<<<<<< HEAD
         self.board_display.draw_board(self.screen, self.space, self.size)
+=======
+        self.boardDisplay.draw_board(self.screen, self.space, self.size)
+>>>>>>> main
 
     def loop(self):
         """Loop until 'esc' or quit"""
         for event in pygame.event.get():
+<<<<<<< HEAD
             # ToDo
             # pylint: disable=no-member
             if event.type == pygame.QUIT:
@@ -56,6 +71,10 @@ class Display:
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     self.board.turn_off(0)
+=======
+            if event.type == pygame.QUIT:
+                self.should_exit = True    
+>>>>>>> main
         self.draw()
         pygame.display.update()
         return self.should_exit
