@@ -25,7 +25,7 @@ class Display:
         self.size = size
         self.space = space
 
-        self.boardDisplay = BoardDisplay(board, cols, rows)       
+        self.board_display = BoardDisplay(board, cols, rows)       
         self.init_pygame()
 
     def init_pygame(self):
@@ -41,7 +41,7 @@ class Display:
     def draw(self):
         """Main draw loop"""
         self.screen.fill(self.background)
-        self.boardDisplay.draw_board(self.screen, self.space, self.size)
+        self.board_display.draw_board(self.screen, self.space, self.size)
 
     def loop(self):
         """Loop until 'esc' or quit"""

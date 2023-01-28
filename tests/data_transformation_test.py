@@ -12,8 +12,10 @@ def test_frame_length():
 
     # Todo: more tests necessary?
     assert frame_length(a) == 32, '"a" should take up 32 indices'
+    assert frame_length(e) == 32, '"e" should take up 32 indices'
     assert frame_length(i) == 8, '"i" should take up 8 indices'
     assert frame_length(DOLLAR) == 40, '"$" should take up 40 indices'
+
 
 def test_symbol_to_array():
     """Test that symbol_to_array correctly calculates array form"""

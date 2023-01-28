@@ -2,8 +2,32 @@
 
 # Todo: location?
 
+# todo
+# pylint: disable=wildcard-import
+# pylint: disable=import-error
+from writing.groups_8 import *
+# pylint: disable=undefined-variable
+
+from math import floor
+
+def character_to_symbol(char):
+    """Gets the symbol for the character"""
+    ascii_val = ord(char)
+    # todo: make everything like for symbols?
+    if ascii_val >= 97 and ascii_val < 123:
+        return lowercase[ascii_val-97]
+    elif ascii_val >= 65 and ascii_val < 91:
+        return uppercase[ascii_val-65]
+    elif ascii_val >= 48 and ascii_val < 58:
+        return numbers[ascii_val-48]
+    elif char in symbols:
+        return symbols[char]
+    else:
+        print("Cannot find char: " + char)
+        return []
+
 def frame_length(sym):
-    """Returns the highest multiple of 8 (- 1) above the largest index in the symbol array. This makes it so the frame has the correct length, since it should 'fill' all columns it uses"""
+    """Returns the highest multiple of 8 above the largest index in the symbol array. This makes it so the frame has the correct length, since it should 'fill' all columns it uses"""
     sym_len = len(sym)
     last_idx = sym_len-1
     last_col = sym[last_idx]
@@ -11,7 +35,12 @@ def frame_length(sym):
     last_col_idx = len_last_col-1
     last_val = last_col[last_col_idx]
     # round up to next multiple of 8
-    return 8 * round(last_val / 8.0)
+    ret = -1
+    if last_val % 8 == 0:
+        ret = last_val
+    else:
+        ret = 8 * (floor(last_val / 8.0)+1)
+    return ret
 
 # Todo: dictionary: idx=color instead?
 def symbol_to_array(sym, color=(255,255,255), off=None):

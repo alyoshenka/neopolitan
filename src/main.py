@@ -2,23 +2,9 @@
 Main
 """
 
-import time
-
-# ToDo: fix this
+# todo
 # pylint: disable=import-error
-from board_functions.display import Display
-from board_functions.board import Board
-
-def show_display():
-    """Make a very simple display"""
-    w = 32
-    h = 8
-    s = w*h
-    board = Board(s)
-    display = Display(board=board)
-    display.init_pygame()
-    while not display.should_exit:
-        display.loop()
+from demo import show_display
 
 
 def main():

@@ -4,7 +4,7 @@
 # pylint: disable=import-error
 # pylint: disable=wildcard-import
 # pylint: disable=undefined-variable
-from src.writing.letters_8 import *
+from writing.letters_8 import *
 
 uppercase = [
     A,
