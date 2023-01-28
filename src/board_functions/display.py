@@ -1,6 +1,8 @@
 """Displays a graphical representation of the LED board"""
 
 import pygame
+# Todo
+# pylint: disable=import-error
 from board_functions.board_display import BoardDisplay
 
 class Display:
@@ -28,6 +30,8 @@ class Display:
 
     def init_pygame(self):
         """Initialize pygame"""
+        # ToDo
+        # pylint: disable=no-member
         pygame.init()
         self.screen = pygame.display.set_mode((self.width, self.height))
         # pygame.display.set_caption('stock board simulator')
@@ -42,8 +46,10 @@ class Display:
     def loop(self):
         """Loop until 'esc' or quit"""
         for event in pygame.event.get():
+            # ToDo
+        # pylint: disable=no-member
             if event.type == pygame.QUIT:
-                self.should_exit = True    
+                self.should_exit = True
         self.draw()
         pygame.display.update()
         return self.should_exit
