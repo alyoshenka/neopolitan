@@ -1,5 +1,6 @@
 """LED board data"""
 
+# pylint: disable=fixme
 # Todo
 # pylint: disable=import-error
 from board_functions.colors import ON, OFF
@@ -24,10 +25,10 @@ class Board:
 
     def set_data(self, data, pad_to_end=True, cut_to_size=False):
         """Sets the board data and optionally makes it the right length"""
-        
+
         # Pad the data so it fills the whole size
         if pad_to_end:
-            if(len(data) < self.size):
+            if len(data) < self.size:
                 data += [OFF for i in range(self.size - len(data))]
         # Cut the data so it doesn't "overflow" (even thought this does not cause errors)
         if cut_to_size:
@@ -37,6 +38,7 @@ class Board:
     def turn_on(self, idx, color=ON):
         """Set the color of a given idx (default=white)"""
         if idx >= len(self.data):
+            # pylint: disable=consider-using-f-string
             print('index {0} out of bounds: size = {1}'.format(idx, self.size))
             return
         self.data[idx] = color

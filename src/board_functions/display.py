@@ -1,23 +1,21 @@
 """Displays a graphical representation of the LED board"""
 
 import pygame
+# pylint: disable=fixme
 # Todo
 # pylint: disable=import-error
 from board_functions.board_display import BoardDisplay
 
 class Display:
     """A graphical LED display"""
-    screen = None
-    width = 0
-    height = 0
-    background = None
-    board = None
-    size = 0
-    space = 0
-    should_exit = False
-    boardDisplay = None
+    # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, board, rows=8, cols=32, width=1600, height=400, background=(0, 20, 30), size=20, space=50):
+    # pylint: disable=too-many-arguments
+    def __init__(
+            self, board,
+            rows=8, cols=32,
+            width=1600, height=400,
+            background=(0, 20, 30), size=20, space=50):
         self.background = background
         self.width = width
         self.height = height
@@ -25,7 +23,9 @@ class Display:
         self.size = size
         self.space = space
 
-        self.board_display = BoardDisplay(board, cols, rows)       
+        self.should_exit = False
+
+        self.board_display = BoardDisplay(board, cols, rows)
         self.init_pygame()
 
     def init_pygame(self):
@@ -59,4 +59,4 @@ class Display:
         self.draw()
         pygame.display.update()
         return self.should_exit
-            
+    

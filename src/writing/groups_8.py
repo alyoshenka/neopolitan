@@ -1,5 +1,6 @@
 """All groups of symbols for height of 8"""
 
+# pylint: disable=fixme
 # ToDo: fix this
 # pylint: disable=import-error
 # pylint: disable=wildcard-import
@@ -92,3 +93,7 @@ symbols = {
 }
 
 numbers = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE]
+
+def space(height=8):
+    """Returns a space (empty column) of specified height"""
+    return [[height-1]]

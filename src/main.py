@@ -2,9 +2,10 @@
 Main
 """
 
+# pylint: disable=fixme
 # todo
 # pylint: disable=import-error
-from demo import show_display
+from demo import main as show_display
 
 
 def main():

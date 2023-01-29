@@ -100,7 +100,7 @@ CLOSECURLY = [[1, 5], [9, 10, 12, 13], [19]]
 DOUBLEQUOTE = [[1, 2], [], [17, 18]]
 SINGLEQUOTE = [[1, 2]]
 
-DEFINED_SYMBOLS = 24 
+DEFINED_SYMBOLS = 24
 # ---
 
 # --- Numbers ---

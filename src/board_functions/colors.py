@@ -1,5 +1,6 @@
 """Predefined colors"""
 
+# pylint: disable=fixme
 # Todo: use a color library?
 
 
