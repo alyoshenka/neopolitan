@@ -76,5 +76,3 @@ def main():
     display.init_pygame()
     while not display.should_exit:
         display.loop()
-
-main()
