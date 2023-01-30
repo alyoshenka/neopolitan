@@ -1,4 +1,4 @@
 """Visual tests module"""
 
 import sys
-sys.path.append('/home/alyo/Desktop/projects/neopolitan/src/')
+sys.path.append('src/')
