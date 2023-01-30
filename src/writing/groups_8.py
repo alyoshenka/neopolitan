@@ -1,10 +1,10 @@
 """All groups of symbols for height of 8"""
 
+# pylint: disable=fixme
 # ToDo: fix this
-# pylint: disable=import-error
 # pylint: disable=wildcard-import
-# pylint: disable=undefined-variable
-from src.writing.letters_8 import *
+# pylint: disable=unused-wildcard-import
+from writing.letters_8 import *
 
 uppercase = [
     A,
@@ -92,3 +92,7 @@ symbols = {
 }
 
 numbers = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE]
+
+def space(height=8):
+    """Returns a space (empty column) of specified height"""
+    return [[height-1]]

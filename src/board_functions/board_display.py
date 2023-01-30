@@ -10,6 +10,8 @@ class BoardDisplay:
     board = None
 
     def __init__(self, board, width, height=8):
+        # pylint: disable=line-too-long
+        # pylint: disable=consider-using-f-string
         assert board.size == width * height, 'board size ({0} does not meet given dimensions {1}x{2}'.format(board.size, width, height)
         self.width = width
         self.height = height
@@ -20,14 +22,14 @@ class BoardDisplay:
         assert self.board, 'No board assigned'
 
         for i in range(self.width * self.height):
-            if(i >= len(self.board.data)):
+            if i >= len(self.board.data):
                 print("index", i, "outside of data array bounds")
                 return
-            color = self.board.data[i]            
+            color = self.board.data[i]
             row = self.get_row(i)
             col = self.get_col(i)
 
-            if not self.board.data[i]: 
+            if not self.board.data[i]:
                 continue
             pos = (col * space + space/2, row * space + space/2)
             pygame.draw.circle(screen, color, pos, size)
@@ -38,3 +40,4 @@ class BoardDisplay:
     def get_col(self, idx):
         """Gets the col # from the idx"""
         return idx // self.height
+    
