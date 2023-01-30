@@ -1,9 +1,7 @@
 """LED board data"""
 
 # pylint: disable=fixme
-# Todo
-# pylint: disable=import-error
-from board_functions.colors import ON, OFF
+from .colors import ON, OFF
 
 class Board:
     """Represents the colors for a board"""

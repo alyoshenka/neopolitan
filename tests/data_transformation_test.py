@@ -1,8 +1,9 @@
+"""Tests data transformation"""
 
-# ToDo: fix this
-# pylint: disable=import-error
 # pylint: disable=wildcard-import
-# pylint: disable=undefined-variable
+# pylint: disable=unused-wildcard-import
+# pylint: disable=fixme
+
 from src.writing.letters_8 import *
 from src.writing.data_transformation import frame_length
 from src.writing.data_transformation import symbol_to_array
@@ -26,5 +27,4 @@ def test_symbol_to_array():
     assert symbol_to_array(a, color=1, off=0) == a_array, 'Data array does not match expected'
 
     # Todo: more tests?
-
-    
+ 

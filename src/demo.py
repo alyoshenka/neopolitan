@@ -2,10 +2,10 @@
 
 # pylint: disable=fixme
 # ToDo: fix this
-# pylint: disable=import-error
 
 import getopt
 import sys
+
 
 from board_functions.display import Display
 from board_functions.board import Board
