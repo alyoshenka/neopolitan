@@ -3,7 +3,6 @@
 import pygame
 # pylint: disable=fixme
 # Todo
-# pylint: disable=import-error
 from board_functions.board_display import BoardDisplay
 
 class Display:

@@ -3,12 +3,8 @@
 # pylint: disable=fixme
 # Todo: location?
 # todo
-# pylint: disable=wildcard-import
-# pylint: disable=import-error
 from math import floor
-from writing.groups_8 import *
-# pylint: disable=undefined-variable
-
+from writing.groups_8 import uppercase, lowercase, symbols, numbers
 
 
 def character_to_symbol(char):
