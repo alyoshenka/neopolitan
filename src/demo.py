@@ -28,28 +28,29 @@ def main():
     try:
         # args, vals
         args = getopt.getopt(argument_list, options, long_options)
-        for arg, val in args:
-            if arg in ('-m', '--message'):
-                message = val
-            elif arg in ('-g', '--graphical'):
-                if val == 'True':
-                    graphical = True
-                elif val == 'False':
-                    graphical = False
-                else:
-                    print('Could not parse "graphical" argument:', val)
-            elif arg in ('-s', 'scroll'):
-                if val in ('slow', 'medium', 'fast'):
-                    scroll_speed = val
-                else:
-                    print('Invalid scroll speed:', val)
-            elif arg in ('-w', 'wrap'):
-                if val == 'True':
-                    wrap = True
-                elif val == 'False':
-                    wrap = False
-                else:
-                    print('Could not parse "wrap" argument:', val)
+        if len(args[0]) > 0:
+            for arg, val in args[0]:
+                if arg in ('-m', '--message'):
+                    message = val
+                elif arg in ('-g', '--graphical'):
+                    if val == 'True':
+                        graphical = True
+                    elif val == 'False':
+                        graphical = False
+                    else:
+                        print('Could not parse "graphical" argument:', val)
+                elif arg in ('-s', 'scroll'):
+                    if val in ('slow', 'medium', 'fast'):
+                        scroll_speed = val
+                    else:
+                        print('Invalid scroll speed:', val)
+                elif arg in ('-w', 'wrap'):
+                    if val == 'True':
+                        wrap = True
+                    elif val == 'False':
+                        wrap = False
+                    else:
+                        print('Could not parse "wrap" argument:', val)
         print('message set to:', message)
         print('graphical set to:', graphical)
         print('scroll speed set to:', scroll_speed)

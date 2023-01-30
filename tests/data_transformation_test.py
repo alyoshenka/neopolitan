@@ -15,6 +15,7 @@ def test_frame_length():
     assert frame_length(e) == 32, '"e" should take up 32 indices'
     assert frame_length(i) == 8, '"i" should take up 8 indices'
     assert frame_length(DOLLAR) == 40, '"$" should take up 40 indices'
+    assert frame_length('space') == 16, '"space" should take up 16 indices'
 
 
 def test_symbol_to_array():
