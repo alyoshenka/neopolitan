@@ -77,7 +77,7 @@ def main():
     concat = space
     for char in message:
         arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)
-        concat += space + space # todo: use defined space
+        concat = concat + space + arr # todo: use defined space
     board.set_data(concat)
 
     display.init_pygame()
