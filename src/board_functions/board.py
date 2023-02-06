@@ -49,3 +49,11 @@ class Board:
     def set_color(self, idx, color):
         """Set the color of a given index"""
         self.turn_on(idx, color=color)
+
+    def scroll(self, wrap=True, height=8):
+        """'Scrolls' the data by one 'column' (height)"""
+        to_remove = self.data[0:height]
+        self.data = self.data[height:]
+        if wrap:
+            self.data += to_remove
+            
