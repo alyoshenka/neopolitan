@@ -13,7 +13,7 @@ def test_board_scroll():
     board.scroll(height=1)
     assert board.data == scroll_once_with_wrap_height_1,  \
         'Scrolled data did not match expected'
-    board.scroll(wrap=False, height=1)
+    board.scroll(wrap=False, height=1, pad=False)
     assert board.data == then_scroll_once_without_wrap_height_1, \
         'Scrolled data did not match expected'
     
