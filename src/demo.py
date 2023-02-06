@@ -84,6 +84,6 @@ def main():
     while not display.should_exit:
         display.loop()
         if scroll_speed:
-            board.scroll()
+            board.scroll(wrap=wrap)
             
         time.sleep(scroll_wait)

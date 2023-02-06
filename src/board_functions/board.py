@@ -50,10 +50,23 @@ class Board:
         """Set the color of a given index"""
         self.turn_on(idx, color=color)
 
-    def scroll(self, wrap=True, height=8):
+    def all_off(self):
+        """Returns whether all the indices are off"""
+        # would be much easier with the dictionary route
+        for idx in self.data:
+            if idx != OFF and idx != None:
+                return False
+        return True
+
+    def scroll(self, wrap=True, height=8, pad=True):
         """'Scrolls' the data by one 'column' (height)"""
+        if self.all_off():
+            return # do nothing
         to_remove = self.data[0:height]
         self.data = self.data[height:]
         if wrap:
             self.data += to_remove
+        if pad and len(self.data) < self.size:
+            for i in range(self.size - len(self.data)):
+                self.data.append(OFF) # when to use None?
             
