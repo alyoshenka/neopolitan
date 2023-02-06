@@ -5,7 +5,7 @@
 
 import getopt
 import sys
-
+import time
 
 from board_functions.display import Display
 from board_functions.board import Board
@@ -21,6 +21,7 @@ def main():
     message = 'hello world'
     graphical = True
     scroll_speed = 'medium'
+    scroll_wait = 0.2
     wrap = True
     argument_list = sys.argv[1:]
     options = 'm:g:s:w:'
@@ -42,6 +43,12 @@ def main():
                 elif arg in ('-s', 'scroll'):
                     if val in ('slow', 'medium', 'fast'):
                         scroll_speed = val
+                        if scroll_speed == 'slow':
+                            scroll_wait = 0.7
+                        elif scroll_speed == 'medium':
+                            scroll_wait = 0.2
+                        else: # fast
+                            scroll_wait = 0.1
                     else:
                         print('Invalid scroll speed:', val)
                 elif arg in ('-w', 'wrap'):
@@ -70,9 +77,13 @@ def main():
     concat = space
     for char in message:
         arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)
-        concat = concat + arr + space
+        concat += space + space # todo: use defined space
     board.set_data(concat)
 
     display.init_pygame()
     while not display.should_exit:
         display.loop()
+        if scroll_speed:
+            board.scroll()
+            
+        time.sleep(scroll_wait)
