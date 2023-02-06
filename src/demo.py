@@ -5,11 +5,7 @@
 
 import getopt
 import sys
-<<<<<<< HEAD
 import time
-=======
-
->>>>>>> main
 
 from board_functions.display import Display
 from board_functions.board import Board
@@ -25,10 +21,7 @@ def main():
     message = 'hello world'
     graphical = True
     scroll_speed = 'medium'
-<<<<<<< HEAD
     scroll_wait = 0.2
-=======
->>>>>>> main
     wrap = True
     argument_list = sys.argv[1:]
     options = 'm:g:s:w:'
@@ -50,15 +43,12 @@ def main():
                 elif arg in ('-s', 'scroll'):
                     if val in ('slow', 'medium', 'fast'):
                         scroll_speed = val
-<<<<<<< HEAD
                         if scroll_speed == 'slow':
                             scroll_wait = 0.7
                         elif scroll_speed == 'medium':
                             scroll_wait = 0.2
                         else: # fast
                             scroll_wait = 0.1
-=======
->>>>>>> main
                     else:
                         print('Invalid scroll speed:', val)
                 elif arg in ('-w', 'wrap'):
