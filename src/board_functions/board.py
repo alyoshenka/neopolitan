@@ -23,7 +23,7 @@ class Board:
 
     def set_data(self, data, pad_to_end=True, cut_to_size=False):
         """Sets the board data and optionally makes it the right length"""
-
+        
         # Pad the data so it fills the whole size
         if pad_to_end:
             if len(data) < self.size:
