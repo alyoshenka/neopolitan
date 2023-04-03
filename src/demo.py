@@ -87,3 +87,98 @@ def main():
             board.scroll(wrap=wrap)
             
         time.sleep(scroll_wait)
+
+
+def with_args(events):
+    """Make a very simple display"""
+    # pylint: disable=too-many-locals
+    # pylint: disable=too-many-branches
+
+    message = 'hello world'
+    graphical = True
+    scroll_speed = 'medium'
+    scroll_wait = 0.2
+    wrap = True
+    argument_list = sys.argv[1:]
+    options = 'm:g:s:w:'
+    long_options = ['message=', 'graphical=', 'scroll=', 'wrap=']
+    try:
+        # args, vals
+        args = getopt.getopt(argument_list, options, long_options)
+        if len(args[0]) > 0:
+            for arg, val in args[0]:
+                if arg in ('-m', '--message'):
+                    message = val
+                elif arg in ('-g', '--graphical'):
+                    if val == 'True':
+                        graphical = True
+                    elif val == 'False':
+                        graphical = False
+                    else:
+                        print('Could not parse "graphical" argument:', val)
+                elif arg in ('-s', 'scroll'):
+                    if val in ('slow', 'medium', 'fast'):
+                        scroll_speed = val
+                        if scroll_speed == 'slow':
+                            scroll_wait = 0.7
+                        elif scroll_speed == 'medium':
+                            scroll_wait = 0.2
+                        else: # fast
+                            scroll_wait = 0.1
+                    else:
+                        print('Invalid scroll speed:', val)
+                elif arg in ('-w', 'wrap'):
+                    if val == 'True':
+                        wrap = True
+                    elif val == 'False':
+                        wrap = False
+                    else:
+                        print('Could not parse "wrap" argument:', val)
+        print('message set to:', message)
+        print('graphical set to:', graphical)
+        print('scroll speed set to:', scroll_speed)
+        print('wrap set to:', wrap)
+
+    except getopt.error as err:
+        print('getopt error:', str(err))
+
+    width = 32
+    height = 8
+    size = width*height
+    board = Board(size)
+    display = Display(board=board)
+
+    # Display "hello"
+    space = [OFF for i in range(8)]
+    concat = space
+    for char in message:
+        arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)
+        concat = concat + space + arr # todo: use defined space
+    board.set_data(concat)
+
+    display.init_pygame()
+    while not display.should_exit:
+        # process events
+        while not events.empty():
+            event = events.get()
+            print('event:', event) # no idea how it already split?
+            event_list = event.split()
+            first = event_list[0]
+            if first == 'exit':
+                return
+            if first == 'say':
+                print('e:', event)
+                message = event_list[1]
+                # make new data
+                concat = space
+                for char in message:
+                    arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)                
+                    concat = concat + space + arr # todo: use defined space
+                board.set_data(concat)
+                print('set message:', message)
+            
+        display.loop()
+        if scroll_speed:
+            board.scroll(wrap=wrap)
+
+        time.sleep(scroll_wait)
