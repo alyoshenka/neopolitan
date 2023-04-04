@@ -57,12 +57,13 @@ def symbol_to_array(sym, color=(255,255,255), off=None):
             frame[val] = color
     return frame
 
-def str_to_data(msg, color=ON):
+def str_to_data(msg, color=ON, add_space=4):
     """Converts a string into usable display data"""
 
     data = []
-    line = [OFF for i in range(8)]
+    line = [OFF for i in range(8)] # todo: height?
     for char in msg:
         arr = symbol_to_array(character_to_symbol(char), color=color, off=OFF)
         data = data + arr + line
+    data += line*add_space
     return data

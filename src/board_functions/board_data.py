@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 @dataclass
-class BoardData:
+class BoardData: # todo: DisplayData?
     message: str
     graphical: bool
     scroll_speed: str

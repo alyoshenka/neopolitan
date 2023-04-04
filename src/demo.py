@@ -153,14 +153,6 @@ def with_args(events):
     display = Display(board=board)
 
     # Display "hello"
-    """
-    space = [OFF for i in range(8)]
-    concat = space
-    for char in board_data.message:
-        arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)
-        concat = concat + space + arr # todo: use defined space
-    arr += space
-    """
     board.set_data(str_to_data(board_data.message))
 
     # todo: graphical?
