@@ -89,20 +89,11 @@ def main():
         time.sleep(scroll_wait)
 
 
-def with_args(events):
-    """Make a very simple display"""
-    # pylint: disable=too-many-locals
-    # pylint: disable=too-many-branches
-
+def process_arguments():
+    """Process the command line arguments and return them as a BoardData object"""
     board_data = default_board_data
 
-    """
-    message = 'hello world'
-    graphical = True
-    scroll_speed = 'medium'
-    scroll_wait = 0.2
-    wrap = True
-    """
+    scroll_speed = 'medium' # todo: make better
     argument_list = sys.argv[1:]
     options = 'm:g:s:w:'
     long_options = ['message=', 'graphical=', 'scroll=', 'wrap=']
@@ -122,10 +113,10 @@ def with_args(events):
                         print('Could not parse "graphical" argument:', val)
                 elif arg in ('-s', 'scroll'):
                     if val in ('slow', 'medium', 'fast'):
-                        scroll_speed = val
-                        if scroll_speed == 'slow':
+                        board_data.scroll_speed = val
+                        if val == 'slow':
                             board_data.scroll_wait = 0.7
-                        elif scroll_speed == 'medium':
+                        elif val == 'medium':
                             board_data.scroll_wait = 0.2
                         else: # fast
                             board_data.scroll_wait = 0.1
@@ -133,18 +124,27 @@ def with_args(events):
                         print('Invalid scroll speed:', val)
                 elif arg in ('-w', 'wrap'):
                     if val == 'True':
-                        board_data.wrap = True
+                        board_data.should_wrap = True
                     elif val == 'False':
-                       board_data.wrap = False
+                       board_data.should_wrap = False
                     else:
                         print('Could not parse "wrap" argument:', val)
         print('message set to:', board_data.message)
         print('graphical set to:', board_data.graphical)
-        print(f'scroll speed set to: {scroll_speed} ({board_data.scroll_wait})')
-        print('wrap set to:', board_data.wrap)
+        print(f'scroll speed set to: {board_data.scroll_speed} ({board_data.scroll_wait})')
+        print('wrap set to:', board_data.should_wrap)
 
     except getopt.error as err:
         print('getopt error:', str(err))
+
+    return board_data
+
+def with_args(events):
+    """Make a very simple display"""
+    # pylint: disable=too-many-locals
+    # pylint: disable=too-many-branches
+
+    board_data = process_arguments()
 
     width = 32
     height = 8
@@ -184,7 +184,7 @@ def with_args(events):
                 print('set message:', message)
             
         display.loop()
-        if scroll_speed:
-            board.scroll(wrap=board_data.wrap)
+        if board_data.scroll_speed:
+            board.scroll(wrap=board_data.should_wrap)
 
         time.sleep(board_data.scroll_wait)
