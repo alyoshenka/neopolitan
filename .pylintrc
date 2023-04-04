@@ -1,0 +1,8 @@
+[MASTER]
+    ignore=testboardrunner.py
+
+[BASIC]
+    good-names=i
+
+[MESSAGES CONTROL]
+    disable=fixme

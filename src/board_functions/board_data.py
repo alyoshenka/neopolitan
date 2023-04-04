@@ -1,7 +1,9 @@
+"""Holds data for displaying a board"""
 from dataclasses import dataclass
 
 @dataclass
 class BoardData: # todo: DisplayData?
+    """Holds data for displaying a board"""
     message: str
     graphical: bool
     scroll_speed: str

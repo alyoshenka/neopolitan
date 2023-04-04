@@ -1,6 +1,9 @@
 """Some board demos"""
 
 # pylint: disable=fixme
+# pylint: disable=too-many-nested-blocks
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
 # ToDo: fix this
 
 import getopt
@@ -86,7 +89,7 @@ def main():
         display.loop()
         if scroll_speed:
             board.scroll(wrap=wrap)
-            
+
         time.sleep(scroll_wait)
 
 
@@ -126,7 +129,7 @@ def process_arguments():
                     if val == 'True':
                         board_data.should_wrap = True
                     elif val == 'False':
-                       board_data.should_wrap = False
+                        board_data.should_wrap = False
                     else:
                         print('Could not parse "wrap" argument:', val)
         print('message set to:', board_data.message)
@@ -173,7 +176,7 @@ def with_args(events):
                 message = event_list[1]
                 board.set_data(str_to_data(message))
                 print('set message:', message)
-            
+
         display.loop()
         if board_data.scroll_speed:
             board.scroll(wrap=board_data.should_wrap)
