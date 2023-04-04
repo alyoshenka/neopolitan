@@ -23,7 +23,7 @@ class Board:
 
     def set_data(self, data, pad_to_end=True, cut_to_size=False):
         """Sets the board data and optionally makes it the right length"""
-        
+
         # Pad the data so it fills the whole size
         if pad_to_end:
             if len(data) < self.size:
@@ -54,7 +54,7 @@ class Board:
         """Returns whether all the indices are off"""
         # would be much easier with the dictionary route
         for idx in self.data:
-            if idx != OFF and idx != None:
+            if idx not in (None, OFF):
                 return False
         return True
 
@@ -67,6 +67,6 @@ class Board:
         if wrap:
             self.data += to_remove
         if pad and len(self.data) < self.size:
+            # pylint: disable=unused-variable
             for i in range(self.size - len(self.data)):
                 self.data.append(OFF) # when to use None?
-            
