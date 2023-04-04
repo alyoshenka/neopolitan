@@ -10,8 +10,9 @@ import time
 from board_functions.display import Display
 from board_functions.board import Board
 from board_functions.colors import OFF, ON
-from writing.data_transformation import character_to_symbol, symbol_to_array
-from board_functions.board_data import BoardData, default_board_data
+from board_functions.board_data import default_board_data
+from writing.data_transformation import character_to_symbol, symbol_to_array, str_to_data
+
 
 def main():
     """Make a very simple display"""
@@ -93,7 +94,6 @@ def process_arguments():
     """Process the command line arguments and return them as a BoardData object"""
     board_data = default_board_data
 
-    scroll_speed = 'medium' # todo: make better
     argument_list = sys.argv[1:]
     options = 'm:g:s:w:'
     long_options = ['message=', 'graphical=', 'scroll=', 'wrap=']
@@ -153,18 +153,22 @@ def with_args(events):
     display = Display(board=board)
 
     # Display "hello"
+    """
     space = [OFF for i in range(8)]
     concat = space
     for char in board_data.message:
         arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)
         concat = concat + space + arr # todo: use defined space
-    board.set_data(concat)
+    arr += space
+    """
+    board.set_data(str_to_data(board_data.message))
 
     # todo: graphical?
 
     display.init_pygame()
     while not display.should_exit:
         # process events
+        # todo: make better
         while not events.empty():
             event = events.get()
             print('event:', event)
@@ -175,12 +179,7 @@ def with_args(events):
             if first == 'say':
                 print('e:', event)
                 message = event_list[1]
-                # make new data
-                concat = space
-                for char in message:
-                    arr = symbol_to_array(character_to_symbol(char), color=ON, off=OFF)                
-                    concat = concat + space + arr # todo: use defined space
-                board.set_data(concat)
+                board.set_data(str_to_data(message))
                 print('set message:', message)
             
         display.loop()

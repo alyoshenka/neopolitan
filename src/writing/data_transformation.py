@@ -5,7 +5,7 @@
 # todo
 from math import floor
 from writing.groups_8 import uppercase, lowercase, symbols, numbers
-
+from board_functions.colors import ON, OFF
 
 def character_to_symbol(char):
     """Gets the symbol for the character"""
@@ -56,3 +56,13 @@ def symbol_to_array(sym, color=(255,255,255), off=None):
         for val in col:
             frame[val] = color
     return frame
+
+def str_to_data(msg, color=ON):
+    """Converts a string into usable display data"""
+
+    data = []
+    line = [OFF for i in range(8)]
+    for char in msg:
+        arr = symbol_to_array(character_to_symbol(char), color=color, off=OFF)
+        data = data + arr + line
+    return data
