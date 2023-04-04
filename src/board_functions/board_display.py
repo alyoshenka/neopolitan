@@ -31,7 +31,7 @@ class BoardDisplay:
 
             if not self.board.data[i]:
                 continue
-            pos = (col * space + space/2, row * space + space/2)
+            pos = (int(col * space + space/2), int(row * space + space/2))
             pygame.draw.circle(screen, color, pos, size)
 
     def get_row(self, idx):

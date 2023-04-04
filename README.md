@@ -11,6 +11,7 @@ Given that access to hardware boards can be constrictive and testing can be diff
 **todo: test on clean environment**
 1. Clone the project
 1. Navigate to the project folder
+1. Install requirements with `pip install -r requirements.txt`
 1. Run the `src/main.py` with `Python3`
 
 ### Command Line Arguments
