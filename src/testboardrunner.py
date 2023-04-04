@@ -17,6 +17,8 @@ def runner():
     Thread(target=add_to_queue, args=(events, 'say abcdefg', 4,)).start()
     Thread(target=add_to_queue, args=(events, 'exit', 8,)).start()
 
+    # todo: 'off' event
+
     # t.join() # no difference
 
 runner()
