@@ -1,6 +1,7 @@
 """Draws a board"""
 
 import pygame
+from const import WIDTH, HEIGHT
 # from board import Board
 
 class BoardDisplay:
@@ -9,7 +10,7 @@ class BoardDisplay:
     height = 0
     board = None
 
-    def __init__(self, board, width, height=8):
+    def __init__(self, board, width=WIDTH, height=HEIGHT):
         # pylint: disable=line-too-long
         # pylint: disable=consider-using-f-string
         assert board.size == width * height, 'board size ({0} does not meet given dimensions {1}x{2}'.format(board.size, width, height)

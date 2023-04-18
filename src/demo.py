@@ -12,7 +12,7 @@ import getopt
 import sys
 import time
 
-from board_functions.display import Display
+from graphical.display import Display
 from board_functions.board import Board
 from board_functions.colors import OFF, ON
 from board_functions.board_data import default_board_data
@@ -191,28 +191,27 @@ def on_board():
     # todo: make absolutely sure this is running on the Pi (or something that can handle the required libraries)
 
     import time
-    import board
-    import neopixel
-    from matplotlib.colors import hsv_to_rgb as hsv_to_rgb
+    from hardware.board_display import BoardDisplay
 
-    # todo: put const vars into const.py
-    pixels = neopixel.NeoPixel(board.D10, 256, brightness=0.01)
+    board = Board(256)
+    display = BoardDisplay(board)
+    s = 0.5
 
-    # do the stuff
-    pixels.fill((0,0,0))
-    time.sleep(0.5)
-    pixels.fill((255,0,0))
-    time.sleep(0.5)
-    pixels.fill((0,0,0))
-    time.sleep(0.5)
-    pixels.fill((0,255,0))
-    time.sleep(0.5)
-    pixels.fill((0,0,0))
-    time.sleep(0.5)
-    pixels.fill((0,0,255))
-    time.sleep(0.5)
-    pixels.fill((0,0,0))
-    time.sleep(0.5)
-    pixels.deinit()
+    display.draw_board()
+    time.sleep(s)
+    board.fill((255,0,0))
+    display.draw_board()
+    time.sleep(s)
+    board.fill((0,255,0))
+    display.draw_board()
+    time.sleep(s)
+    board.fill((0,0,255))
+    display.draw_board()
+    time.sleep(s)
+    board.fill((255,255,255))
+    display.draw_board()
+    time.sleep(s)
+
+    display.deinit()
 
 on_board()

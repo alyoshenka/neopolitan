@@ -57,6 +57,12 @@ class Board:
             if idx not in (None, OFF):
                 return False
         return True
+    
+    def fill(self, color):
+        """Sets all the colors in the board"""
+        # todo: make better
+        for i in range(self.size):
+            self.turn_on(i, color)
 
     def scroll(self, wrap=True, height=8, pad=True):
         """'Scrolls' the data by one 'column' (height)"""
