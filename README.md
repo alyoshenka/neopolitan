@@ -24,3 +24,5 @@ Given that access to hardware boards can be constrictive and testing can be diff
   - Controls how quickly the display scrolls across the screen
 - `--wrap {True/False}`/`-w {True/False}`
   - Determines whether the display should "wrap around" when it gets to the end, or just show a blank screen
+
+todo: command line examples (w/ vids?)
