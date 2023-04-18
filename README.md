@@ -8,7 +8,6 @@ This is a revamp of [stockticker](https://github.com/alyoshenka/stockticker), wh
 Given that access to hardware boards can be constrictive and testing can be difficult, this project aims to support data display on a graphical interface so that anyone can access it. `pygame` is used to display the graphical display, while the `neopixel` (hence the project name) library [will be] is used to interface with the hardware board.
 
 ## Installation and Usage
-**todo: test on clean environment**
 1. Clone the project
 1. Navigate to the project folder
 1. Install requirements with `pip install -r requirements.txt`
