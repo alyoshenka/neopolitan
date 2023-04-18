@@ -17,6 +17,7 @@ from board_functions.board import Board
 from board_functions.colors import OFF, ON
 from board_functions.board_data import default_board_data
 from writing.data_transformation import character_to_symbol, symbol_to_array, str_to_data
+from const import WIDTH, HEIGHT
 
 
 def main():
@@ -144,14 +145,14 @@ def process_arguments():
     return board_data
 
 def with_args(events):
-    """Make a very simple display"""
+    """Make a very simple display, includes event queue as an argument"""
     # pylint: disable=too-many-locals
     # pylint: disable=too-many-branches
 
     board_data = process_arguments()
 
-    width = 32
-    height = 8
+    width = WIDTH
+    height = HEIGHT
     size = width*height
     board = Board(size)
     display = Display(board=board)
@@ -177,6 +178,7 @@ def with_args(events):
                 message = event_list[1]
                 board.set_data(str_to_data(message))
                 print('set message:', message)
+            # todo: error handling
 
         display.loop()
         if board_data.scroll_speed:
