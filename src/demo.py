@@ -6,6 +6,8 @@
 # pylint: disable=too-many-branches
 # ToDo: fix this
 
+# todo: only import pygame if on graphical
+
 import getopt
 import sys
 import time
@@ -91,7 +93,6 @@ def main():
             board.scroll(wrap=wrap)
 
         time.sleep(scroll_wait)
-
 
 def process_arguments():
     """Process the command line arguments and return them as a BoardData object"""
@@ -182,3 +183,34 @@ def with_args(events):
             board.scroll(wrap=board_data.should_wrap)
 
         time.sleep(board_data.scroll_wait)
+
+def on_board():
+    """Run operations on the board"""
+    # todo: make absolutely sure this is running on the Pi (or something that can handle the required libraries)
+
+    import time
+    import board
+    import neopixel
+    from matplotlib.colors import hsv_to_rgb as hsv_to_rgb
+
+    # todo: put const vars into const.py
+    pixels = neopixel.NeoPixel(board.D10, 256, brightness=0.01)
+
+    # do the stuff
+    pixels.fill((0,0,0))
+    time.sleep(0.5)
+    pixels.fill((255,0,0))
+    time.sleep(0.5)
+    pixels.fill((0,0,0))
+    time.sleep(0.5)
+    pixels.fill((0,255,0))
+    time.sleep(0.5)
+    pixels.fill((0,0,0))
+    time.sleep(0.5)
+    pixels.fill((0,0,255))
+    time.sleep(0.5)
+    pixels.fill((0,0,0))
+    time.sleep(0.5)
+    pixels.deinit()
+
+on_board()

@@ -3,7 +3,7 @@
 import pygame
 # pylint: disable=fixme
 # Todo
-from board_functions.board_display import BoardDisplay
+from graphical.board_display import BoardDisplay
 
 class Display:
     """A graphical LED display"""
