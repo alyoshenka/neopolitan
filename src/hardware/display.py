@@ -1,6 +1,9 @@
 """Handles LED board initialization and cleanup"""
-import board as pinout # todo: make sure no import errors
-import neopixel
+try:
+    import board as pinout # todo: make sure no import errors
+    import neopixel
+except:
+    print('Unable to import - likely wrong OS')
 from hardware.board_display import BoardDisplay
 from board_functions.board import Board
 
