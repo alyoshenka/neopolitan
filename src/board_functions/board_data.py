@@ -10,4 +10,4 @@ class BoardData: # todo: DisplayData?
     scroll_wait: float
     should_wrap: bool
 
-default_board_data = BoardData('hello world', True, 'medium', 0.2, True)
+default_board_data = BoardData('hello world', False, 'medium', 0.2, True)

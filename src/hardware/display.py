@@ -19,7 +19,7 @@ class Display:
         # Initialize board
         self.board_display = BoardDisplay(Board(size), self.pixels, size)
 
-    def deinit(self):
+    def __del__(self):
         """Clean up neopixel"""
         self.pixels.deinit()
 
