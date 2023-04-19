@@ -1,32 +1,20 @@
 """Interacts with the LED board"""
-import board as pinout # todo: make sure no import errors
-import neopixel
+
 from const import WIDTH, HEIGHT
 
 # todo: same as graphical version - abstract classes in Python?
 
 class BoardDisplay:
-    """Interacts with the LED board"""
-    width = 0
-    height = 0
-    size = 0
-    board = None
-    pixels = None
+    """Draws board data"""
 
-    def __init__(self, board, width=WIDTH, height=HEIGHT):
+    def __init__(self, board, pixels, size=WIDTH*HEIGHT):
         # pylint: disable=line-too-long
         # pylint: disable=consider-using-f-string      
-        self.width = width
-        self.height = height
-        self.board = board
-        self.size = self.width*self.height # todo: organization
-
-        assert board.size == self.size, 'board size ({0} does not meet given dimensions {1}x{2}'.format(board.size, width, height)
-
-        self.pixels = neopixel.NeoPixel(pinout.D10, self.size, brightness=0.01, auto_write=False)
-
-    def deinit(self):
-        self.pixels.deinit()
+        self.board = board  
+        assert pixels, 'Neopixel library not initialized'
+        self.pixels = pixels
+        self.size = size # todo: organization
+        assert board.size == self.size, 'board size ({0} does not meet given size ({1})'.format(board.size, size)           
 
     def draw_board(self):
         """Sets all the LEDs in accordance with the current data"""
@@ -37,11 +25,11 @@ class BoardDisplay:
                 print("index", i, "outside of data array bounds")
                 return
             self.pixels[i] = self.board.data[i]
-        # tell the board to update itself
-        self.pixels.show()
 
+    # TODO: SET DATA TO MATCH!!
     def fill(self, color):
-        self.pixels.fill(color)
+        # self.pixels.fill(color)
+        self.board.fill(color)
     
     def fill_red(self):
         self.fill((255,0,0))

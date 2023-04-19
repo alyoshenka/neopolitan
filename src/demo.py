@@ -191,26 +191,37 @@ def on_board():
     # todo: make absolutely sure this is running on the Pi (or something that can handle the required libraries)
 
     import time
-    from hardware.board_display import BoardDisplay
+    from hardware.display import Display
 
-    board = Board(256)
-    display = BoardDisplay(board)
+    board_data = process_arguments()
+
+    display = Display(WIDTH*HEIGHT)
+    board_display = display.board_display
+    board = board_display.board
     s = 0.5
 
-    display.draw_board()
+    display.draw()
     time.sleep(s)
-    board.fill((255,0,0))
-    display.draw_board()
+    board_display.fill((255,0,0))
+    display.draw()
     time.sleep(s)
-    board.fill((0,255,0))
-    display.draw_board()
+    board_display.fill((0,255,0))
+    display.draw()
     time.sleep(s)
-    board.fill((0,0,255))
-    display.draw_board()
+    board_display.fill((0,0,255))
+    display.draw()
     time.sleep(s)
-    board.fill((255,255,255))
-    display.draw_board()
+    board_display.fill((255,255,255))
+    display.draw()
     time.sleep(s)
+
+    board.set_data(str_to_data(board_data.message))
+    while not display.should_exit:
+        display.loop()
+        if board_data.scroll_speed:
+            board.scroll(wrap=board_data.should_wrap)
+
+        time.sleep(board_data.scroll_wait)
 
     display.deinit()
 
