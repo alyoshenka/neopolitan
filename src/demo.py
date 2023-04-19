@@ -46,8 +46,6 @@ def main():
 
     board.set_data(str_to_data(board_data.message))
 
-    if board_data.graphical:
-        display.init_pygame()
     while not display.should_exit:
         display.loop()
         if board_data.scroll_speed:
@@ -145,45 +143,4 @@ def with_args(events):
             board.scroll(wrap=board_data.should_wrap)
 
         time.sleep(board_data.scroll_wait)
-
-def on_board():
-    """Run operations on the board"""
-    # todo: make absolutely sure this is running on the Pi
-    # (or something that can handle the required libraries)
-
-    # pylint: disable=redefined-outer-name
-    # pylint: disable=import-outside-toplevel
-    from hardware.display import Display as HardwareDisplay
-
-    board_data = process_arguments()
-
-    display = HardwareDisplay(WIDTH*HEIGHT)
-    board_display = display.board_display
-    board = board_display.board
-    slp = 0.5
-
-    display.draw()
-    time.sleep(slp)
-    board_display.fill((255,0,0))
-    display.draw()
-    time.sleep(slp)
-    board_display.fill((0,255,0))
-    display.draw()
-    time.sleep(slp)
-    board_display.fill((0,0,255))
-    display.draw()
-    time.sleep(slp)
-    board_display.fill((255,255,255))
-    display.draw()
-    time.sleep(slp)
-
-    board.set_data(str_to_data(board_data.message))
-    while not display.should_exit:
-        display.loop()
-        if board_data.scroll_speed:
-            board.scroll(wrap=board_data.should_wrap)
-
-        time.sleep(board_data.scroll_wait)
-
-    display.deinit()
     
