@@ -1,9 +1,8 @@
 """Handles LED board initialization and cleanup"""
-try:
-    import board as pinout # todo: make sure no import errors
-    import neopixel
-except:
-    print('Unable to import - likely wrong OS')
+# pylint: disable=import-error
+# todo: handle tests in repo
+import board as pinout # todo: make sure no import errors
+import neopixel
 from hardware.board_display import BoardDisplay
 from board_functions.board import Board
 

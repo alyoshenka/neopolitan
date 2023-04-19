@@ -32,7 +32,7 @@ class BoardDisplay:
     # pylint: disable=no-self-argument
     def flip(data, height=HEIGHT, start_at_first=False):
         """
-        Handles flipping alternate 'rows' so that data appears as expected; 
+        Handles flipping alternate 'rows' so that data appears as expected;
         returns the flipped data
         """
 
