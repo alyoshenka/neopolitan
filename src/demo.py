@@ -224,5 +224,4 @@ def on_board():
         time.sleep(board_data.scroll_wait)
 
     display.deinit()
-
-on_board()
+    

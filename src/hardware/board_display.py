@@ -20,11 +20,31 @@ class BoardDisplay:
         """Sets all the LEDs in accordance with the current data"""
         assert self.board, 'No board assigned'
 
+        flipped_data = BoardDisplay.flip(self.board.data, HEIGHT)
+
         for i in range(self.size):
             if i >= len(self.board.data):
                 print("index", i, "outside of data array bounds")
                 return
-            self.pixels[i] = self.board.data[i]
+            self.pixels[i] = flipped_data[i]
+
+    def flip(data, height=HEIGHT, startAtFirst=False):
+        """Handles flipping alternate 'rows' so that data appears as expected; returns the flipped data"""
+
+        # Every other 'column', starting with the second, should be flipped such that it appears 'upside down', so that when the board displays it actually appears right side up.
+        assert len(data) % height == 0, 'Data length does not fill its last column' # todo: doesn't need to tho
+
+        flipped_data = []
+        idx = 0
+        while idx < len(data):
+            col = data[idx:idx+height]
+            if startAtFirst:
+                col = reversed(col)
+            startAtFirst = not startAtFirst
+            flipped_data += col
+            idx += height
+
+        return flipped_data
 
     # TODO: SET DATA TO MATCH!!
     def fill(self, color):
