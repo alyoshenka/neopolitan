@@ -18,14 +18,17 @@ class Display:
         self.board_display = BoardDisplay(Board(size), self.pixels, size)
 
     def deinit(self):
+        """Clean up neopixel"""
         self.pixels.deinit()
 
     def draw(self):
+        """Turn on/off all pixels"""
         self.board_display.draw_board()
         # tell the board to update itself
         self.pixels.show()
 
     def loop(self):
+        """Drawing loop"""
         # todo: handle events
 
         self.draw()

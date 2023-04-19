@@ -188,32 +188,34 @@ def with_args(events):
 
 def on_board():
     """Run operations on the board"""
-    # todo: make absolutely sure this is running on the Pi (or something that can handle the required libraries)
+    # todo: make absolutely sure this is running on the Pi
+    # (or something that can handle the required libraries)
 
-    import time
-    from hardware.display import Display
+    # pylint: disable=redefined-outer-name
+    # pylint: disable=import-outside-toplevel
+    from hardware.display import Display as HardwareDisplay
 
     board_data = process_arguments()
 
-    display = Display(WIDTH*HEIGHT)
+    display = HardwareDisplay(WIDTH*HEIGHT)
     board_display = display.board_display
     board = board_display.board
-    s = 0.5
+    slp = 0.5
 
     display.draw()
-    time.sleep(s)
+    time.sleep(slp)
     board_display.fill((255,0,0))
     display.draw()
-    time.sleep(s)
+    time.sleep(slp)
     board_display.fill((0,255,0))
     display.draw()
-    time.sleep(s)
+    time.sleep(slp)
     board_display.fill((0,0,255))
     display.draw()
-    time.sleep(s)
+    time.sleep(slp)
     board_display.fill((255,255,255))
     display.draw()
-    time.sleep(s)
+    time.sleep(slp)
 
     board.set_data(str_to_data(board_data.message))
     while not display.should_exit:

@@ -57,7 +57,7 @@ class Board:
             if idx not in (None, OFF):
                 return False
         return True
-    
+
     def fill(self, color):
         """Sets all the colors in the board"""
         # todo: make better

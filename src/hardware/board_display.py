@@ -9,12 +9,13 @@ class BoardDisplay:
 
     def __init__(self, board, pixels, size=WIDTH*HEIGHT):
         # pylint: disable=line-too-long
-        # pylint: disable=consider-using-f-string      
-        self.board = board  
+        # pylint: disable=consider-using-f-string
+        self.board = board
         assert pixels, 'Neopixel library not initialized'
         self.pixels = pixels
         self.size = size # todo: organization
-        assert board.size == self.size, 'board size ({0} does not meet given size ({1})'.format(board.size, size)           
+        assert board.size == self.size, \
+            'board size ({0} does not meet given size ({1})'.format(board.size, size)
 
     def draw_board(self):
         """Sets all the LEDs in accordance with the current data"""
@@ -28,19 +29,28 @@ class BoardDisplay:
                 return
             self.pixels[i] = flipped_data[i]
 
-    def flip(data, height=HEIGHT, startAtFirst=False):
-        """Handles flipping alternate 'rows' so that data appears as expected; returns the flipped data"""
+    # pylint: disable=no-self-argument
+    def flip(data, height=HEIGHT, start_at_first=False):
+        """
+        Handles flipping alternate 'rows' so that data appears as expected; 
+        returns the flipped data
+        """
 
-        # Every other 'column', starting with the second, should be flipped such that it appears 'upside down', so that when the board displays it actually appears right side up.
-        assert len(data) % height == 0, 'Data length does not fill its last column' # todo: doesn't need to tho
+        # Every other 'column', starting with the second,
+        # should be flipped such that it appears 'upside down',
+        # so that when the board displays it actually appears right side up.
+        assert len(data) % height == 0, \
+            'Data length does not fill its last column' # todo: doesn't need to tho
 
         flipped_data = []
         idx = 0
+        # pylint: disable=unsubscriptable-object
         while idx < len(data):
             col = data[idx:idx+height]
-            if startAtFirst:
+            if start_at_first:
                 col = reversed(col)
-            startAtFirst = not startAtFirst
+            start_at_first = not start_at_first
+
             flipped_data += col
             idx += height
 
@@ -48,16 +58,23 @@ class BoardDisplay:
 
     # TODO: SET DATA TO MATCH!!
     def fill(self, color):
+        """Fill all the pixels a given color"""
         # self.pixels.fill(color)
         self.board.fill(color)
-    
+
     def fill_red(self):
+        """Fill all the pixels red"""
         self.fill((255,0,0))
     def fill_green(self):
+        """Fill all the pixels green"""
         self.fill((0,255,0))
     def fill_blue(self):
+        """Fill all the pixels blue"""
         self.fill((0,0,255))
     def fill_white(self):
+        """Fill all the pixels white"""
         self.fill((255,255,255))
     def fill_blank(self):
+        """Turn all the pixels off"""
+        # todo: unecessary
         self.fill((0,0,0))
