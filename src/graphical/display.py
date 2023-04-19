@@ -3,7 +3,8 @@
 import pygame
 # pylint: disable=fixme
 # Todo
-from board_functions.board_display import BoardDisplay
+from graphical.board_display import BoardDisplay
+from const import WIDTH, HEIGHT
 
 class Display:
     """A graphical LED display"""
@@ -12,7 +13,7 @@ class Display:
     # pylint: disable=too-many-arguments
     def __init__(
             self, board,
-            rows=8, cols=32,
+            rows=HEIGHT, cols=WIDTH,
             width=1600, height=400,
             background=(0, 20, 30), size=20, space=50):
         self.background = background

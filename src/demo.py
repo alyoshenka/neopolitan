@@ -6,11 +6,13 @@
 # pylint: disable=too-many-branches
 # ToDo: fix this
 
+# todo: only import pygame if on graphical
+
 import getopt
 import sys
 import time
 
-from board_functions.display import Display
+from graphical.display import Display
 from board_functions.board import Board
 from board_functions.colors import OFF, ON
 from board_functions.board_data import default_board_data
@@ -92,7 +94,6 @@ def main():
             board.scroll(wrap=wrap)
 
         time.sleep(scroll_wait)
-
 
 def process_arguments():
     """Process the command line arguments and return them as a BoardData object"""
@@ -184,3 +185,45 @@ def with_args(events):
             board.scroll(wrap=board_data.should_wrap)
 
         time.sleep(board_data.scroll_wait)
+
+def on_board():
+    """Run operations on the board"""
+    # todo: make absolutely sure this is running on the Pi
+    # (or something that can handle the required libraries)
+
+    # pylint: disable=redefined-outer-name
+    # pylint: disable=import-outside-toplevel
+    from hardware.display import Display as HardwareDisplay
+
+    board_data = process_arguments()
+
+    display = HardwareDisplay(WIDTH*HEIGHT)
+    board_display = display.board_display
+    board = board_display.board
+    slp = 0.5
+
+    display.draw()
+    time.sleep(slp)
+    board_display.fill((255,0,0))
+    display.draw()
+    time.sleep(slp)
+    board_display.fill((0,255,0))
+    display.draw()
+    time.sleep(slp)
+    board_display.fill((0,0,255))
+    display.draw()
+    time.sleep(slp)
+    board_display.fill((255,255,255))
+    display.draw()
+    time.sleep(slp)
+
+    board.set_data(str_to_data(board_data.message))
+    while not display.should_exit:
+        display.loop()
+        if board_data.scroll_speed:
+            board.scroll(wrap=board_data.should_wrap)
+
+        time.sleep(board_data.scroll_wait)
+
+    display.deinit()
+    
