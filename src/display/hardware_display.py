@@ -3,11 +3,13 @@
 # todo: handle tests in repo
 import board as pinout # todo: make sure no import errors
 import neopixel
-from hardware.board_display import BoardDisplay
+# pylint: disable=no-name-in-module
+# todo: why^?
+from display.display import Display
+from display.hardware_board_display import HardwareBoardDisplay
 from board_functions.board import Board
 
-# todo: rename??
-class Display:
+class HardwareDisplay(Display):
     """Handles LED board initialization and cleanup"""
 
     def __init__(self, size):
@@ -17,7 +19,7 @@ class Display:
         # Initialize pixels
         self.pixels = neopixel.NeoPixel(pinout.D10, self.size, brightness=0.01, auto_write=False)
         # Initialize board
-        self.board_display = BoardDisplay(Board(size), self.pixels, size)
+        self.board_display = HardwareBoardDisplay(Board(size), self.pixels, size)
 
     def __del__(self):
         """Clean up neopixel"""

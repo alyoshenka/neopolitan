@@ -37,8 +37,8 @@ def main(events=None):
     # todo: make better
     if board_data.graphical:
         from graphical.display import Display as GraphicalDisplay
-        display = GraphicalDisplay(board=board)
         board = Board(size)
+        display = GraphicalDisplay(board=board)
     else:
         from hardware.display import Display as HardwareDisplay
         display = HardwareDisplay(WIDTH*HEIGHT)

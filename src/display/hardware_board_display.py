@@ -1,10 +1,9 @@
 """Interacts with the LED board"""
 
 from const import WIDTH, HEIGHT
+from display.board_display import BoardDisplay
 
-# todo: same as graphical version - abstract classes in Python?
-
-class BoardDisplay:
+class HardwareBoardDisplay(BoardDisplay):
     """Draws board data"""
 
     def __init__(self, board, pixels, size=WIDTH*HEIGHT):
@@ -21,7 +20,7 @@ class BoardDisplay:
         """Sets all the LEDs in accordance with the current data"""
         assert self.board, 'No board assigned'
 
-        flipped_data = BoardDisplay.flip(self.board.data, HEIGHT)
+        flipped_data = HardwareBoardDisplay.flip(self.board.data, HEIGHT)
 
         for i in range(self.size):
             if i >= len(self.board.data):

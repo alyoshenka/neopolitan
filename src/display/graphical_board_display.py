@@ -1,10 +1,11 @@
 """Draws a board"""
 
 import pygame
+from display.board_display import BoardDisplay
 from const import WIDTH, HEIGHT
 # from board import Board
 
-class BoardDisplay:
+class GraphicalBoardDisplay(BoardDisplay):
     """Draws board data"""
     width = 0
     height = 0
