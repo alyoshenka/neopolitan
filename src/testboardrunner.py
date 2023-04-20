@@ -1,7 +1,7 @@
 import time
 from threading import Thread
 from queue import Queue
-from demo import main
+from main import main
 
 # doesn't this also need to listen tho??
 
