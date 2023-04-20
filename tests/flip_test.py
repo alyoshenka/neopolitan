@@ -1,7 +1,7 @@
 """Tests whether the 'flip' functionality is implemented correctly"""
 
 # pylint: disable=import-error
-from hardware.board_display import BoardDisplay
+from display.hardware_board_display import HardwareBoardDisplay
 
 # pylint: disable=pointless-string-statement
 """
@@ -17,5 +17,5 @@ def test_flip():
     expected_data = [0,1,1,0,0,1]
     height = 2
 
-    assert BoardDisplay.flip(initial_data, height=height) == expected_data, \
+    assert HardwareBoardDisplay.flip(initial_data, height=height) == expected_data, \
         'Flipped data does not match expected'

@@ -1,16 +1,15 @@
 """Interacts with the LED board"""
 
+from display.abstract_board_display import BoardDisplay
 from const import WIDTH, HEIGHT
 
-# todo: same as graphical version - abstract classes in Python?
-
-class BoardDisplay:
+class HardwareBoardDisplay(BoardDisplay):
     """Draws board data"""
 
     def __init__(self, board, pixels, size=WIDTH*HEIGHT):
         # pylint: disable=line-too-long
         # pylint: disable=consider-using-f-string
-        self.board = board
+        super().__init__(board)
         assert pixels, 'Neopixel library not initialized'
         self.pixels = pixels
         self.size = size # todo: organization
@@ -21,7 +20,7 @@ class BoardDisplay:
         """Sets all the LEDs in accordance with the current data"""
         assert self.board, 'No board assigned'
 
-        flipped_data = BoardDisplay.flip(self.board.data, HEIGHT)
+        flipped_data = HardwareBoardDisplay.flip(self.board.data, HEIGHT)
 
         for i in range(self.size):
             if i >= len(self.board.data):

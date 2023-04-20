@@ -2,11 +2,16 @@
 
 import pygame
 # pylint: disable=fixme
-# Todo
-from graphical.board_display import BoardDisplay
+# pylint: disable=import-error
+# pylint: disable=no-name-in-module
+# todo: why import error??
+from display.abstract_display import Display
+from display.graphical_board_display import GraphicalBoardDisplay
 from const import WIDTH, HEIGHT
 
-class Display:
+# todo: cleanup pygame
+
+class GraphicalDisplay(Display):
     """A graphical LED display"""
     # pylint: disable=too-many-instance-attributes
 
@@ -16,6 +21,8 @@ class Display:
             rows=HEIGHT, cols=WIDTH,
             width=1600, height=400,
             background=(0, 20, 30), size=20, space=50):
+        super().__init__()
+
         self.background = background
         self.width = width
         self.height = height
@@ -23,9 +30,7 @@ class Display:
         self.size = size
         self.space = space
 
-        self.should_exit = False
-
-        self.board_display = BoardDisplay(board, cols, rows)
+        self.board_display = GraphicalBoardDisplay(board, cols, rows)
         self.init_pygame()
 
     def init_pygame(self):
@@ -49,6 +54,7 @@ class Display:
             # ToDo
             # pylint: disable=no-member
             if event.type == pygame.QUIT:
+                # pylint: disable=attribute-defined-outside-init
                 self.should_exit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
