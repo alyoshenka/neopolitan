@@ -57,17 +57,13 @@ def main(events=None):
             first = event_list[0]
             if first == 'exit':
                 return
-            elif first == 'say':
+            if first == 'say':
                 print('e:', event)
                 message = event_list[1]
                 board.set_data(str_to_data(message))
                 print('set message:', message)
             else: # try board data events
-                returned_board_data = process_board_data_events(board_data, event_list)
-                if returned_board_data:
-                    board_data = returned_board_data
-                else:
-                    print('Error processing board data events:', event)
+                board_data = process_board_data_events(board_data, event_list)
             # todo: error handling
         display.loop()
         if board_data.scroll_speed:
@@ -156,9 +152,7 @@ def process_board_data_events(board_data, event_list):
                 print('set speed: ', speed)
             except ValueError:
                 print('Cannot parse speed: ', speed)
-                return None
-    else:
-        return None
+
     return board_data
 
 if __name__ == '__main__':

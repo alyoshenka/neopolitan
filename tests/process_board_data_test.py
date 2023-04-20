@@ -1,14 +1,14 @@
 """Tests various ways that board data is manipulated"""
 
 from board_functions.board_data import default_board_data
-from demo import process_board_data_events
-from const import SCROLL_SLOW, SCROLL_MED, SCROLL_FAST
+from main import process_board_data_events
+from const import SCROLL_FAST
 
 def test_board_data_event_processing():
     """Verify that processing events into board data object handles as expected"""
 
     # todo: more events
-    
+
     board_data = default_board_data
     assert board_data is not None, 'Board data needs to be defined first'
 
