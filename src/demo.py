@@ -4,6 +4,7 @@
 # pylint: disable=too-many-nested-blocks
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
+# pylint: disable=import-outside-toplevel
 # ToDo: fix this
 
 # todo: only import pygame if on graphical
@@ -13,10 +14,11 @@ import sys
 import time
 
 from board_functions.board import Board
-from board_functions.colors import OFF, ON
+# from board_functions.colors import OFF, ON
 from board_functions.board_data import default_board_data
-from writing.data_transformation import character_to_symbol, symbol_to_array, str_to_data
+from writing.data_transformation import str_to_data
 from os_detection import on_pi
+# pylint: disable=wildcard-import
 from const import *
 
 
@@ -76,8 +78,8 @@ def process_arguments():
                             board_data.graphical = True
                     elif val == 'False':
                         if not on_pi():
-                            print('This code cannot be run in hardware mode when not run on a Raspberry Pi,' \
-                                ' setting graphical to True')
+                            print('This code cannot be run in hardware mode when not run'\
+                            ' on a Raspberry Pi, setting graphical to True')
                             board_data.graphical = True
                         else:
                             board_data.graphical = False
@@ -115,6 +117,8 @@ def with_args(events):
     """Make a very simple display, includes event queue as an argument"""
     # pylint: disable=too-many-locals
     # pylint: disable=too-many-branches
+
+    from graphical.display import Display
 
     board_data = process_arguments()
 
