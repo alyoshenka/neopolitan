@@ -1,5 +1,5 @@
 """
-Handles taking board data and running the 
+Handles taking board data and running the
 necessary code to get LEDs to show up
 
 This means running 'pygame.draw(...)' or 'pixels.turnOn(...)'

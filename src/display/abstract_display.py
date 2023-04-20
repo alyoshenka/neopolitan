@@ -1,5 +1,5 @@
 """
-Handles initialization of the framework 
+Handles initialization of the framework
 that will allow LEDs to be displayed
 
 This means initializing the pygame or neopixel libraries
