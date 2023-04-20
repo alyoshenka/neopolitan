@@ -1,7 +1,7 @@
 import time
 from threading import Thread
 from queue import Queue
-from demo import with_args
+from demo import main
 
 # doesn't this also need to listen tho??
 
@@ -11,10 +11,13 @@ def add_to_queue(q, e, t):
 
 def runner():
     events = Queue()
-    t = Thread(target=with_args, args=(events,))
+    t = Thread(target=main, args=(events,))
     t.start()
 
-    Thread(target=add_to_queue, args=(events, 'say abcdefg', 4,)).start()
+    Thread(target=add_to_queue, args=(events, 'speed fast', 1,)).start()
+    Thread(target=add_to_queue, args=(events, 'speed 1.0', 2,)).start()
+    Thread(target=add_to_queue, args=(events, 'speed banana', 3,)).start()
+    Thread(target=add_to_queue, args=(events, 'say abcdefg', 5,)).start()
     Thread(target=add_to_queue, args=(events, 'exit', 8,)).start()
 
     # todo: 'off' event

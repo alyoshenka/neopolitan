@@ -22,7 +22,7 @@ from os_detection import on_pi
 from const import *
 
 
-def main():
+def main(events=None):
     """Make a very simple display"""
 
     board_data = process_arguments()
@@ -48,6 +48,27 @@ def main():
     board.set_data(str_to_data(board_data.message))
 
     while not display.should_exit:
+        # process events
+        # todo: make better
+        while events and not events.empty():
+            event = events.get()
+            print('event:', event)
+            event_list = event.split()
+            first = event_list[0]
+            if first == 'exit':
+                return
+            elif first == 'say':
+                print('e:', event)
+                message = event_list[1]
+                board.set_data(str_to_data(message))
+                print('set message:', message)
+            else: # try board data events
+                returned_board_data = process_board_data_events(board_data, event_list)
+                if returned_board_data:
+                    board_data = returned_board_data
+                else:
+                    print('Error processing board data events:', event)
+            # todo: error handling
         display.loop()
         if board_data.scroll_speed:
             board.scroll(wrap=board_data.should_wrap)
@@ -113,47 +134,29 @@ def process_arguments():
 
     return board_data
 
-def with_args(events):
-    """Make a very simple display, includes event queue as an argument"""
-    # pylint: disable=too-many-locals
-    # pylint: disable=too-many-branches
+def process_board_data_events(board_data, event_list):
+    """Manipulate board data according to events"""
 
-    from graphical.display import Display
-
-    board_data = process_arguments()
-
-    width = WIDTH
-    height = HEIGHT
-    size = width*height
-    board = Board(size)
-    display = Display(board=board)
-
-    # Display "hello"
-    board.set_data(str_to_data(board_data.message))
-
-    # todo: graphical?
-
-    display.init_pygame()
-    while not display.should_exit:
-        # process events
-        # todo: make better
-        while not events.empty():
-            event = events.get()
-            print('event:', event)
-            event_list = event.split()
-            first = event_list[0]
-            if first == 'exit':
-                return
-            if first == 'say':
-                print('e:', event)
-                message = event_list[1]
-                board.set_data(str_to_data(message))
-                print('set message:', message)
-            # todo: error handling
-
-        display.loop()
-        if board_data.scroll_speed:
-            board.scroll(wrap=board_data.should_wrap)
-
-        time.sleep(board_data.scroll_wait)
-    
+    first = event_list[0]
+    if first == 'speed':
+        speed = event_list[1]
+        if speed == 'slow':
+            board_data.scroll_slow()
+            print('set speed: slow')
+        elif speed == 'medium':
+            board_data.scroll_medium()
+            print('set speed: medium')
+        elif speed == 'fast':
+            board_data.scroll_fast()
+            print('set speed: fast')
+        else:
+            try:
+                speed = float(speed)
+                board_data.set_scroll_wait(speed)
+                print('set speed: ', speed)
+            except ValueError:
+                print('Cannot parse speed: ', speed)
+                return None
+    else:
+        return None
+    return board_data
