@@ -16,13 +16,12 @@ from board_functions.board import Board
 from board_functions.colors import OFF, ON
 from board_functions.board_data import default_board_data
 from writing.data_transformation import character_to_symbol, symbol_to_array, str_to_data
-from const import WIDTH, HEIGHT
+from os_detection import on_pi
+from const import *
 
 
 def main():
     """Make a very simple display"""
-    # pylint: disable=too-many-locals
-    # pylint: disable=too-many-branches
 
     board_data = process_arguments()
 
@@ -69,20 +68,30 @@ def process_arguments():
                     board_data.message = val
                 elif arg in ('-g', '--graphical'):
                     if val == 'True':
-                        board_data.graphical = True
+                        if on_pi():
+                            print('This code cannot be run in graphical mode on a Raspberry Pi,'\
+                                ' setting graphical to False')
+                            board_data.graphical = False
+                        else:
+                            board_data.graphical = True
                     elif val == 'False':
-                        board_data.graphical = False
+                        if not on_pi():
+                            print('This code cannot be run in hardware mode when not run on a Raspberry Pi,' \
+                                ' setting graphical to True')
+                            board_data.graphical = True
+                        else:
+                            board_data.graphical = False
                     else:
                         print('Could not parse "graphical" argument:', val)
                 elif arg in ('-s', 'scroll'):
                     if val in ('slow', 'medium', 'fast'):
                         board_data.scroll_speed = val
                         if val == 'slow':
-                            board_data.scroll_wait = 0.7
+                            board_data.scroll_wait = SCROLL_FAST
                         elif val == 'medium':
-                            board_data.scroll_wait = 0.2
+                            board_data.scroll_wait = SCROLL_MED
                         else: # fast
-                            board_data.scroll_wait = 0.1
+                            board_data.scroll_wait = SCROLL_SLOW
                     else:
                         print('Invalid scroll speed:', val)
                 elif arg in ('-w', 'wrap'):
