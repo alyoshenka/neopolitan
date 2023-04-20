@@ -54,6 +54,7 @@ class GraphicalDisplay(Display):
             # ToDo
             # pylint: disable=no-member
             if event.type == pygame.QUIT:
+                # pylint: disable=attribute-defined-outside-init
                 self.should_exit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:

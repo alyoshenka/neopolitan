@@ -7,6 +7,7 @@ This means running 'pygame.draw(...)' or 'pixels.turnOn(...)'
 
 from abc import ABC, abstractmethod
 
+# pylint: disable=too-few-public-methods
 class BoardDisplay(ABC):
     """Utilizes board data to turn on/off LEDs"""
 
