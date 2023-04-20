@@ -1,7 +1,7 @@
 """Draws a board"""
 
 import pygame
-from display.board_display import BoardDisplay
+from display.abstract_board_display import BoardDisplay
 from const import WIDTH, HEIGHT
 # from board import Board
 
@@ -14,11 +14,12 @@ class GraphicalBoardDisplay(BoardDisplay):
     def __init__(self, board, width=WIDTH, height=HEIGHT):
         # pylint: disable=line-too-long
         # pylint: disable=consider-using-f-string
+        super().__init__(board)
         assert board.size == width * height, 'board size ({0} does not meet given dimensions {1}x{2}'.format(board.size, width, height)
         self.width = width
         self.height = height
-        self.board = board
 
+    # pylint: disable=arguments-differ
     def draw_board(self, screen, space, size):
         """Draw all the 'lights' in the board"""
         assert self.board, 'No board assigned'

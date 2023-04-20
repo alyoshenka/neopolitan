@@ -5,7 +5,7 @@ import board as pinout # todo: make sure no import errors
 import neopixel
 # pylint: disable=no-name-in-module
 # todo: why^?
-from display.display import Display
+from display.abstract_display import Display
 from display.hardware_board_display import HardwareBoardDisplay
 from board_functions.board import Board
 
@@ -13,8 +13,10 @@ class HardwareDisplay(Display):
     """Handles LED board initialization and cleanup"""
 
     def __init__(self, size):
+
+        super().__init__()
+
         self.size = size
-        self.should_exit = False
 
         # Initialize pixels
         self.pixels = neopixel.NeoPixel(pinout.D10, self.size, brightness=0.01, auto_write=False)

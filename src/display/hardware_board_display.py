@@ -1,7 +1,7 @@
 """Interacts with the LED board"""
 
+from display.abstract_board_display import BoardDisplay
 from const import WIDTH, HEIGHT
-from display.board_display import BoardDisplay
 
 class HardwareBoardDisplay(BoardDisplay):
     """Draws board data"""
@@ -9,7 +9,7 @@ class HardwareBoardDisplay(BoardDisplay):
     def __init__(self, board, pixels, size=WIDTH*HEIGHT):
         # pylint: disable=line-too-long
         # pylint: disable=consider-using-f-string
-        self.board = board
+        super().__init__(board)
         assert pixels, 'Neopixel library not initialized'
         self.pixels = pixels
         self.size = size # todo: organization

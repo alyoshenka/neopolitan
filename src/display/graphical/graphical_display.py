@@ -21,14 +21,14 @@ class GraphicalDisplay(Display):
             rows=HEIGHT, cols=WIDTH,
             width=1600, height=400,
             background=(0, 20, 30), size=20, space=50):
-        super().__init__()
-
         self.background = background
         self.width = width
         self.height = height
         self.board = board
         self.size = size
         self.space = space
+
+        self.should_exit = False
 
         self.board_display = GraphicalBoardDisplay(board, cols, rows)
         self.init_pygame()
