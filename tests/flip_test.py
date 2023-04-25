@@ -1,7 +1,7 @@
 """Tests whether the 'flip' functionality is implemented correctly"""
 
 # pylint: disable=import-error
-from display.hardware_board_display import HardwareBoardDisplay
+from neopolitan.display.hardware_board_display import HardwareBoardDisplay
 
 # pylint: disable=pointless-string-statement
 """

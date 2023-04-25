@@ -1,8 +1,8 @@
 """Test groups"""
 
-from src.writing.letters_8 import  \
+from neopolitan.writing.letters_8 import  \
     DEFINED_UPPERCASE, DEFINED_LOWERCASE, DEFINED_SYMBOLS, DEFINED_NUMBERS
-from src.writing.groups_8 import  \
+from neopolitan.writing.groups_8 import  \
     uppercase, lowercase, symbols, numbers
 
 

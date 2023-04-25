@@ -1,6 +1,6 @@
 """Board test"""
 
-from src.board_functions.board import Board
+from neopolitan.board_functions.board import Board
 
 def test_board_scroll():
     """Test that scrolling the data works correctly"""
