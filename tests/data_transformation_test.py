@@ -4,9 +4,9 @@
 # pylint: disable=unused-wildcard-import
 # pylint: disable=fixme
 
-from src.writing.letters_8 import *
-from src.writing.data_transformation import frame_length
-from src.writing.data_transformation import symbol_to_array
+from neopolitan.writing.letters_8 import *
+from neopolitan.writing.data_transformation import frame_length
+from neopolitan.writing.data_transformation import symbol_to_array
 
 def test_frame_length():
     """Ensure that frame_length returns the correct length for given arrays"""

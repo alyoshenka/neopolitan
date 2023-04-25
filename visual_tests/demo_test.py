@@ -1,5 +1,5 @@
 """Demo test"""
-from src import main
+from neopolitan import main
 
 def demo_test():
     """Test demo"""
