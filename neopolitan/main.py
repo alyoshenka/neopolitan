@@ -13,13 +13,18 @@ import getopt
 import sys
 import time
 
-from board_functions.board import Board
+# make it so we can import from top-level
+# todo: is this bad? how to fix???
+# pylint: disable=unused-import
+import __init__
+
+from neopolitan.board_functions.board import Board
 # from board_functions.colors import OFF, ON
-from board_functions.board_data import default_board_data
-from writing.data_transformation import str_to_data
-from os_detection import on_pi
+from neopolitan.board_functions.board_data import default_board_data
+from neopolitan.writing.data_transformation import str_to_data
+from neopolitan.os_detection import on_pi
 # pylint: disable=wildcard-import
-from const import *
+from neopolitan.const import *
 
 
 def main(events=None):

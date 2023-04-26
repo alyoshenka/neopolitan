@@ -1,7 +1,9 @@
 import time
 from threading import Thread
 from queue import Queue
-from main import main
+
+import __init__
+from neopolitan.main import main
 
 # doesn't this also need to listen tho??
 
