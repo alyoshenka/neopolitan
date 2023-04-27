@@ -1,5 +1,4 @@
-"""Import main application function"""
+"""Initialize neopolitan package"""
 
-# from .main import main
-import sys
-sys.path.append(".")
+# this does not work. following the keras example, this should work.
+from neopolitan import writing

@@ -13,11 +13,6 @@ import getopt
 import sys
 import time
 
-# make it so we can import from top-level
-# todo: is this bad? how to fix???
-# pylint: disable=unused-import
-import __init__
-
 from neopolitan.board_functions.board import Board
 # from board_functions.colors import OFF, ON
 from neopolitan.board_functions.board_data import default_board_data

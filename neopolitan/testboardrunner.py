@@ -3,7 +3,7 @@ from threading import Thread
 from queue import Queue
 
 import __init__
-from neopolitan.main import main
+from neopolitan.neop import main
 
 # doesn't this also need to listen tho??
 
