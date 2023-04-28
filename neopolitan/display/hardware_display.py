@@ -5,8 +5,6 @@ import board as pinout # todo: make sure no import errors
 import neopixel
 # pylint: disable=no-name-in-module
 # todo: why^?
-# pylint: disable=unused-import
-import __init__
 from neopolitan.display.abstract_display import Display
 from neopolitan.display.hardware_board_display import HardwareBoardDisplay
 from neopolitan.board_functions.board import Board

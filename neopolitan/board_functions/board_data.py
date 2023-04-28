@@ -1,7 +1,5 @@
 """Holds data for displaying a board"""
 from dataclasses import dataclass
-# pylint: disable=unused-import
-import __init__
 from neopolitan.const import SCROLL_SLOW, SCROLL_MED, SCROLL_FAST
 
 @dataclass

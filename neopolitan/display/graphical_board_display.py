@@ -1,8 +1,6 @@
 """Draws a board"""
 
 import pygame
-# pylint: disable=unused-import
-import __init__
 from neopolitan.display.abstract_board_display import BoardDisplay
 from neopolitan.const import WIDTH, HEIGHT
 # from board import Board

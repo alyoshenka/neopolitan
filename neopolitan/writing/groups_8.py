@@ -4,8 +4,6 @@
 # ToDo: fix this
 # pylint: disable=wildcard-import
 # pylint: disable=unused-wildcard-import
-# pylint: disable=unused-import
-import __init__
 from neopolitan.writing.letters_8 import *
 
 uppercase = [

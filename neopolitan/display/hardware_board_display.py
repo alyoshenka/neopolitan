@@ -1,6 +1,5 @@
 """Interacts with the LED board"""
-# pylint: disable=unused-import
-import __init__
+
 from neopolitan.display.abstract_board_display import BoardDisplay
 from neopolitan.const import WIDTH, HEIGHT
 

@@ -1,8 +1,6 @@
 """LED board data"""
 
 # pylint: disable=fixme
-# pylint: disable=unused-import
-import __init__
 from neopolitan.board_functions.colors import ON, OFF
 
 class Board:
