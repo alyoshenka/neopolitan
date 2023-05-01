@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 name = "neopolitan"
 version = "0.1.0"
 authors = [
-  { name="alyo" },
+    { name = "alyo" },
 ]
 description = "Neopolitan: a library for displaying text on LED boards"
 readme = "README.md"
