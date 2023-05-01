@@ -71,6 +71,8 @@ def main(events=None):
 
         time.sleep(board_data.scroll_wait)
 
+    del display
+
 def process_arguments():
     """Process the command line arguments and return them as a BoardData object"""
     board_data = default_board_data
