@@ -34,6 +34,11 @@ class GraphicalDisplay(Display):
         self.board_display = GraphicalBoardDisplay(board, cols, rows)
         self.init_pygame()
 
+    def __del__(self):
+        """Clean up pygame"""
+        # pylint: disable=no-member
+        pygame.quit()
+
     def init_pygame(self):
         """Initialize pygame"""
         # ToDo
