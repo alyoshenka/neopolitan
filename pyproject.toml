@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 name = "neopolitan"
 version = "0.0.2"
 authors = [
-  { name="alyo" },
+    { name = "alyo" },
 ]
 description = "Test Neopolitan package"
 readme = "README.md"
