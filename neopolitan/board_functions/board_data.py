@@ -1,6 +1,6 @@
 """Holds data for displaying a board"""
 from dataclasses import dataclass
-from const import SCROLL_SLOW, SCROLL_MED, SCROLL_FAST
+from neopolitan.const import SCROLL_SLOW, SCROLL_MED, SCROLL_FAST
 
 @dataclass
 class BoardData: # todo: DisplayData?

@@ -1,8 +1,8 @@
 """Draws a board"""
 
 import pygame
-from display.abstract_board_display import BoardDisplay
-from const import WIDTH, HEIGHT
+from neopolitan.display.abstract_board_display import BoardDisplay
+from neopolitan.const import WIDTH, HEIGHT
 # from board import Board
 
 class GraphicalBoardDisplay(BoardDisplay):

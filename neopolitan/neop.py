@@ -13,13 +13,13 @@ import getopt
 import sys
 import time
 
-from board_functions.board import Board
+from neopolitan.board_functions.board import Board
 # from board_functions.colors import OFF, ON
-from board_functions.board_data import default_board_data
-from writing.data_transformation import str_to_data
-from os_detection import on_pi
+from neopolitan.board_functions.board_data import default_board_data
+from neopolitan.writing.data_transformation import str_to_data
+from neopolitan.os_detection import on_pi
 # pylint: disable=wildcard-import
-from const import *
+from neopolitan.const import *
 
 
 def main(events=None):
@@ -36,11 +36,11 @@ def main(events=None):
 
     # todo: make better
     if board_data.graphical:
-        from display.graphical_display import GraphicalDisplay
+        from neopolitan.display.graphical_display import GraphicalDisplay
         board = Board(size)
         display = GraphicalDisplay(board=board)
     else:
-        from display.hardware_display import HardwareDisplay
+        from neopolitan.display.hardware_display import HardwareDisplay
         display = HardwareDisplay(WIDTH*HEIGHT)
         board_display = display.board_display
         board = board_display.board

@@ -1,7 +1,7 @@
 """LED board data"""
 
 # pylint: disable=fixme
-from .colors import ON, OFF
+from neopolitan.board_functions.colors import ON, OFF
 
 class Board:
     """Represents the colors for a board"""

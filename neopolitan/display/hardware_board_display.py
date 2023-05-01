@@ -1,7 +1,7 @@
 """Interacts with the LED board"""
 
-from display.abstract_board_display import BoardDisplay
-from const import WIDTH, HEIGHT
+from neopolitan.display.abstract_board_display import BoardDisplay
+from neopolitan.const import WIDTH, HEIGHT
 
 class HardwareBoardDisplay(BoardDisplay):
     """Draws board data"""

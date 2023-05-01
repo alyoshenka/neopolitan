@@ -4,8 +4,8 @@
 # Todo: location?
 # todo
 from math import floor
-from writing.groups_8 import uppercase, lowercase, symbols, numbers
-from board_functions.colors import ON, OFF
+from neopolitan.writing.groups_8 import uppercase, lowercase, symbols, numbers
+from neopolitan.board_functions.colors import ON, OFF
 
 def character_to_symbol(char):
     """Gets the symbol for the character"""

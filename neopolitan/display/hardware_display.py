@@ -5,9 +5,9 @@ import board as pinout # todo: make sure no import errors
 import neopixel
 # pylint: disable=no-name-in-module
 # todo: why^?
-from display.abstract_display import Display
-from display.hardware_board_display import HardwareBoardDisplay
-from board_functions.board import Board
+from neopolitan.display.abstract_display import Display
+from neopolitan.display.hardware_board_display import HardwareBoardDisplay
+from neopolitan.board_functions.board import Board
 
 class HardwareDisplay(Display):
     """Handles LED board initialization and cleanup"""

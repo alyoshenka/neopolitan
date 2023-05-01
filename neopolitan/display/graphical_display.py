@@ -5,9 +5,10 @@ import pygame
 # pylint: disable=import-error
 # pylint: disable=no-name-in-module
 # todo: why import error??
-from display.abstract_display import Display
-from display.graphical_board_display import GraphicalBoardDisplay
-from const import WIDTH, HEIGHT
+
+from neopolitan.display.abstract_display import Display
+from neopolitan.display.graphical_board_display import GraphicalBoardDisplay
+from neopolitan.const import WIDTH, HEIGHT
 
 # todo: cleanup pygame
 

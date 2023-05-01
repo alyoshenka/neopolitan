@@ -1,3 +1,3 @@
-"""Import main application function"""
+"""Initialize neopolitan package"""
 
-# from .main import main
+# this does not work. following the keras example, this should work.
