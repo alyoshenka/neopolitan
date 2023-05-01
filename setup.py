@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="neopolitan",
-    version="0.1.1",
+    version="0.1.2",
     author="alyo",
     author_email="", # todo: necessary?
     packages=["neopolitan"], # todo: what?
