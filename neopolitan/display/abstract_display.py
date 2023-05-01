@@ -12,9 +12,6 @@ class Display(ABC):
     def __init__(self):
         self.should_exit = False # todo??
 
-    def __del__(self):
-        pass
-
     @abstractmethod
     def draw(self):
         """Initiate the drawing of the board data"""
