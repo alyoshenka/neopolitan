@@ -5,6 +5,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 # pylint: disable=import-outside-toplevel
+# pylint: disable=logging-fstring-interpolation
 # ToDo: fix this
 
 # todo: only import pygame if on graphical
@@ -12,6 +13,8 @@
 import getopt
 import sys
 import time
+import logging
+import datetime
 
 from neopolitan.board_functions.board import Board
 # from board_functions.colors import OFF, ON
@@ -21,9 +24,15 @@ from neopolitan.os_detection import on_pi
 # pylint: disable=wildcard-import
 from neopolitan.const import *
 
+def initialize_logger():
+    """Set up the log file"""
+    filename = 'neopolitan/logs/' + str(datetime.datetime.now()) + '.txt'
+    logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
 
 def main(events=None):
     """Make a very simple display"""
+
+    initialize_logger()
 
     board_data = process_arguments()
 
@@ -52,16 +61,16 @@ def main(events=None):
         # todo: make better
         while events and not events.empty():
             event = events.get()
-            print('event:', event)
+            logging.info(f'event: {event}')
             event_list = event.split()
             first = event_list[0]
             if first == 'exit':
                 return
             if first == 'say':
-                print('e:', event)
+                logging.info(f'e: {event}')
                 message = event_list[1]
                 board.set_data(str_to_data(message))
-                print('set message:', message)
+                logging.info(f'set message: {message}')
             else: # try board data events
                 board_data = process_board_data_events(board_data, event_list)
             # todo: error handling
@@ -90,20 +99,20 @@ def process_arguments():
                 elif arg in ('-g', '--graphical'):
                     if val == 'True':
                         if on_pi():
-                            print('This code cannot be run in graphical mode on a Raspberry Pi,'\
+                            logging.warning('This code cannot be run in graphical mode on a Raspberry Pi,'\
                                 ' setting graphical to False')
                             board_data.graphical = False
                         else:
                             board_data.graphical = True
                     elif val == 'False':
                         if not on_pi():
-                            print('This code cannot be run in hardware mode when not run'\
+                            logging.warning('This code cannot be run in hardware mode when not run'\
                             ' on a Raspberry Pi, setting graphical to True')
                             board_data.graphical = True
                         else:
                             board_data.graphical = False
                     else:
-                        print('Could not parse "graphical" argument:', val)
+                        logging.warning(f'Could not parse "graphical" argument: {val}')
                 elif arg in ('-s', 'scroll'):
                     if val in ('slow', 'medium', 'fast'):
                         board_data.scroll_speed = val
@@ -114,21 +123,21 @@ def process_arguments():
                         else: # fast
                             board_data.scroll_wait = SCROLL_SLOW
                     else:
-                        print('Invalid scroll speed:', val)
+                        logging.warning(f'Invalid scroll speed: {val}')
                 elif arg in ('-w', 'wrap'):
                     if val == 'True':
                         board_data.should_wrap = True
                     elif val == 'False':
                         board_data.should_wrap = False
                     else:
-                        print('Could not parse "wrap" argument:', val)
-        print('message set to:', board_data.message)
-        print('graphical set to:', board_data.graphical)
-        print(f'scroll speed set to: {board_data.scroll_speed} ({board_data.scroll_wait})')
-        print('wrap set to:', board_data.should_wrap)
+                        logging.warning(f'Could not parse "wrap" argument: {val}')
+        logging.info(f'message set to: {board_data.message}')
+        logging.info(f'graphical set to: {board_data.graphical}')
+        logging.info(f'scroll speed set to: {board_data.scroll_speed} ({board_data.scroll_wait})')
+        logging.info(f'wrap set to: {board_data.should_wrap}')
 
     except getopt.error as err:
-        print('getopt error:', str(err))
+        logging.error(f'getopt error: {err}')
 
     return board_data
 
@@ -140,20 +149,20 @@ def process_board_data_events(board_data, event_list):
         speed = event_list[1]
         if speed == 'slow':
             board_data.scroll_slow()
-            print('set speed: slow')
+            logging.info('set speed: slow')
         elif speed == 'medium':
             board_data.scroll_medium()
-            print('set speed: medium')
+            logging.info('set speed: medium')
         elif speed == 'fast':
             board_data.scroll_fast()
-            print('set speed: fast')
+            logging.info('set speed: fast')
         else:
             try:
                 speed = float(speed)
                 board_data.set_scroll_wait(speed)
-                print('set speed: ', speed)
+                logging.info(f'set speed: {speed}')
             except ValueError:
-                print('Cannot parse speed: ', speed)
+                logging.warning(f'Cannot parse speed: {speed}')
 
     return board_data
 
