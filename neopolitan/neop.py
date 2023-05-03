@@ -26,7 +26,7 @@ from neopolitan.const import *
 
 def initialize_logger(prep='logs/'):
     """Set up the log file"""
-    filename = prep + str(datetime.datetime.now()) + '.txt'
+    filename = prep + 'neopolitan_' + str(datetime.datetime.now()) + '.txt'
     logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
 
 def main(events=None):
