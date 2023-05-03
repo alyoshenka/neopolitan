@@ -1,5 +1,6 @@
 """Interacts with the LED board"""
 
+import logging
 from neopolitan.display.abstract_board_display import BoardDisplay
 from neopolitan.const import WIDTH, HEIGHT
 
@@ -24,7 +25,7 @@ class HardwareBoardDisplay(BoardDisplay):
 
         for i in range(self.size):
             if i >= len(self.board.data):
-                print("index", i, "outside of data array bounds")
+                logging.warning('index %s outside of data array bounds', i)
                 return
             self.pixels[i] = flipped_data[i]
 

@@ -1,5 +1,6 @@
 """Draws a board"""
 
+import logging
 import pygame
 from neopolitan.display.abstract_board_display import BoardDisplay
 from neopolitan.const import WIDTH, HEIGHT
@@ -26,7 +27,7 @@ class GraphicalBoardDisplay(BoardDisplay):
 
         for i in range(self.width * self.height):
             if i >= len(self.board.data):
-                print("index", i, "outside of data array bounds")
+                logging.warning('index %i outside of data array bounds', i)
                 return
             color = self.board.data[i]
             row = self.get_row(i)

@@ -4,6 +4,7 @@
 # Todo: location?
 # todo
 from math import floor
+import logging
 from neopolitan.writing.groups_8 import uppercase, lowercase, symbols, numbers
 from neopolitan.board_functions.colors import ON, OFF
 
@@ -22,7 +23,7 @@ def character_to_symbol(char):
         return numbers[ascii_val-48]
     if char in symbols:
         return symbols[char]
-    print("Cannot find char: " + char)
+    logging.warning('Cannot find char: %s', char)
     return []
 
 def frame_length(sym):
