@@ -150,7 +150,11 @@ def process_board_data_events(board_data, event_list):
 
     first = event_list[0]
     if first == 'speed':
-        speed = event_list[1]
+        try:
+            speed = event_list[1]
+        except Exception as err:
+            # todo: better explanation
+            logging.warning('No second value provided, %s', err)
         if speed == 'slow':
             board_data.scroll_slow()
             logging.info('set speed: slow')
@@ -167,6 +171,20 @@ def process_board_data_events(board_data, event_list):
                 logging.info(f'set speed: {speed}')
             except ValueError:
                 logging.warning(f'Cannot parse speed: {speed}')
+    elif first == 'wrap':
+        try:
+            wrap = event_list[1]
+        except Exception as err:
+            # todo: better explanation
+            logging.warning('No second value provided, %s', err)
+        if wrap == 'True' or wrap == '1':
+            board_data.should_wrap = True
+            logging.info('set wrap: True')
+        elif wrap == 'False' or wrap == '0':
+            board_data.should_wrap = False
+            logging.info('set wrap: False')
+        else:
+            logging.warning('Cannot parse wrap: %s', wrap)
 
     return board_data
 
