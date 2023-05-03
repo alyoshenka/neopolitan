@@ -38,7 +38,7 @@ class Board:
         """Set the color of a given idx (default=white)"""
         if idx >= len(self.data):
             # pylint: disable=consider-using-f-string
-            logging.warning('index {0} out of bounds: size = {1}'.format(idx, self.size))
+            logging.warning('index %s out of bounds: size = %s', idx, self.size)
             return
         self.data[idx] = color
 

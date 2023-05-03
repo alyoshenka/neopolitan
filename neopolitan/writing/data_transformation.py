@@ -23,7 +23,7 @@ def character_to_symbol(char):
         return numbers[ascii_val-48]
     if char in symbols:
         return symbols[char]
-    logging.warning(f'Cannot find char: {char}')
+    logging.warning('Cannot find char: %s', char)
     return []
 
 def frame_length(sym):

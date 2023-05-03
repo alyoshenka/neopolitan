@@ -25,7 +25,7 @@ class HardwareBoardDisplay(BoardDisplay):
 
         for i in range(self.size):
             if i >= len(self.board.data):
-                logging.warning(f'index {i} outside of data array bounds')
+                logging.warning('index %s outside of data array bounds', i)
                 return
             self.pixels[i] = flipped_data[i]
 
