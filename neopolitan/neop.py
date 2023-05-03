@@ -152,7 +152,7 @@ def process_board_data_events(board_data, event_list):
     if first == 'speed':
         try:
             speed = event_list[1]
-        # pylint: disable=broad-exception-caught
+        # pylint: disable=broad-except
         except Exception as err:
             # todo: better explanation
             logging.warning('No second value provided, %s', err)
@@ -175,7 +175,7 @@ def process_board_data_events(board_data, event_list):
     elif first == 'wrap':
         try:
             wrap = event_list[1]
-        # pylint: disable=broad-exception-caught
+        # pylint: disable=broad-except
         except Exception as err:
             # todo: better explanation
             logging.warning('No second value provided, %s', err)
