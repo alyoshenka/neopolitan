@@ -24,9 +24,9 @@ from neopolitan.os_detection import on_pi
 # pylint: disable=wildcard-import
 from neopolitan.const import *
 
-def initialize_logger():
+def initialize_logger(prep='logs/'):
     """Set up the log file"""
-    filename = 'logs/' + str(datetime.datetime.now()) + '.txt'
+    filename = prep + str(datetime.datetime.now()) + '.txt'
     logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
 
 def main(events=None):
@@ -67,8 +67,12 @@ def main(events=None):
             if first == 'exit':
                 return
             if first == 'say':
-                logging.info(f'e: {event}')
-                message = event_list[1]
+                logging.info(f'say: {event}')
+                # todo: better handling: this is unintuitive
+                message = ' '
+                for word in event_list[1:]:
+                    message += word + ' '
+                logging.info(message)
                 board.set_data(str_to_data(message))
                 logging.info(f'set message: {message}')
             else: # try board data events
@@ -99,8 +103,8 @@ def process_arguments():
                 elif arg in ('-g', '--graphical'):
                     if val == 'True':
                         if on_pi():
-                            logging.warning('This code cannot be run in graphical mode on a Raspberry Pi,'\
-                                ' setting graphical to False')
+                            logging.warning('This code cannot be run in graphical' \
+                                            ' mode on a Raspberry Pi, setting graphical to False')
                             board_data.graphical = False
                         else:
                             board_data.graphical = True
