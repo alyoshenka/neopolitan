@@ -26,7 +26,14 @@ from neopolitan.const import *
 
 def initialize_logger(prep='logs/'):
     """Set up the log file"""
-    filename = prep + 'neopolitan_' + str(datetime.datetime.now()) + '.txt'
+    # todo: prep arg validation
+    import os
+    log_time = str(datetime.datetime.now()) \
+        .replace(" ", "_") \
+        .replace(".", "_") \
+        .replace(":", "-")
+    filename = f'{os.getcwd()}/{prep}neopolitan_{log_time}.txt'
+    print('log location:', filename)
     logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
 
 def main(events=None):
