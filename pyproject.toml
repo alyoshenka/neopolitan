@@ -16,7 +16,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "pygame"
+    "pygame ; platform_machine != 'armv7l'",
+    "neopixel ; platform_machine == 'armv7l'"
 ]
 [project.urls]
 "Homepage" = "https://github.com/alyoshenka/neopolitan"
