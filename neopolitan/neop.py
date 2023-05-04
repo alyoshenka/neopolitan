@@ -31,14 +31,12 @@ def initialize_logger(prep='logs/'):
     # make directory if it does not exist
     # todo: is this ok?
     if not os.path.exists(prep):
-        print('making', prep, 'directory')
         os.makedirs(prep)
     log_time = str(datetime.datetime.now()) \
         .replace(" ", "_") \
         .replace(".", "_") \
         .replace(":", "-")
     filename = f'{os.getcwd()}/{prep}neopolitan_{log_time}.txt'
-    print('log location:', filename)
     logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
 
 def main(events=None):
