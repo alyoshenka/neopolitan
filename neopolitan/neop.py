@@ -28,6 +28,11 @@ def initialize_logger(prep='logs/'):
     """Set up the log file"""
     # todo: prep arg validation
     import os
+    # make directory if it does not exist
+    # todo: is this ok?
+    if not os.path.exists(prep):
+        print('making', prep, 'directory')
+        os.makedirs(prep)
     log_time = str(datetime.datetime.now()) \
         .replace(" ", "_") \
         .replace(".", "_") \
