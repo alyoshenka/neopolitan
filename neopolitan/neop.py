@@ -23,12 +23,12 @@ from neopolitan.logging import init_logger, get_logger # why tf is this erroring
 # pylint: disable=wildcard-import
 from neopolitan.const import *
 
-# todo: bad placement?
-init_logger()
-logger = get_logger()
 
 def main(events=None):
     """Make a very simple display"""
+
+    init_logger()
+    logger = get_logger()
 
     board_data = process_arguments()
 
@@ -84,6 +84,7 @@ def main(events=None):
 
 def process_arguments():
     """Process the command line arguments and return them as a BoardData object"""
+    logger = get_logger()
     board_data = default_board_data
 
     argument_list = sys.argv[1:]
@@ -143,6 +144,8 @@ def process_arguments():
 
 def process_board_data_events(board_data, event_list):
     """Manipulate board data according to events"""
+
+    logger = get_logger()
 
     first = event_list[0]
     if first == 'speed':
