@@ -19,7 +19,7 @@ from neopolitan.board_functions.board import Board
 from neopolitan.board_functions.board_data import default_board_data
 from neopolitan.writing.data_transformation import str_to_data
 from neopolitan.os_detection import on_pi
-from neopolitan.initialize_logger import init_logger, get_logger
+from neopolitan.logging import init_logger, get_logger # why tf is this erroring?
 # pylint: disable=wildcard-import
 from neopolitan.const import *
 
@@ -143,7 +143,7 @@ def process_arguments():
 
 def process_board_data_events(board_data, event_list):
     """Manipulate board data according to events"""
-   
+
     first = event_list[0]
     if first == 'speed':
         try:
