@@ -190,5 +190,5 @@ def process_board_data_events(board_data, event_list):
 
     return board_data
 
-if __name__ == '__main__':
+if __name__ == '__main__': # todo: is this still true when running from the thread?
     main(initialize_logger=True)
