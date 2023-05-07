@@ -157,7 +157,7 @@ def process_arguments():
 
 def process_board_data_events(board_data, event_list):
     """Manipulate board data according to events"""
-
+    
     first = event_list[0]
     if first == 'speed':
         try:
