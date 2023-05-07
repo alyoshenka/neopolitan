@@ -19,7 +19,7 @@ from neopolitan.board_functions.board import Board
 from neopolitan.board_functions.board_data import default_board_data
 from neopolitan.writing.data_transformation import str_to_data
 from neopolitan.os_detection import on_pi
-from neopolitan.logging import init_logger, get_logger # why tf is this erroring?
+from neopolitan.log import init_logger, get_logger # why tf is this erroring?
 # pylint: disable=wildcard-import
 from neopolitan.const import *
 
@@ -191,4 +191,5 @@ def process_board_data_events(board_data, event_list):
     return board_data
 
 if __name__ == '__main__': # todo: is this still true when running from the thread?
-    main(initialize_logger=True)
+    print('neopolitan is main')
+    main(initialize_logger=True) # try False maybe? for testing

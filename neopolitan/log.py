@@ -11,6 +11,7 @@ def init_logger(prep='logs/'):
     # todo: is this ok?
     if not os.path.exists(prep):
         os.makedirs(prep)
+    # todo: is all this formatting really necessary for a log file?
     log_time = str(datetime.datetime.now()) \
         .replace(" ", "_") \
         .replace(".", "_") \
