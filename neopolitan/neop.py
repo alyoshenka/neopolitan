@@ -24,10 +24,11 @@ from neopolitan.logging import init_logger, get_logger # why tf is this erroring
 from neopolitan.const import *
 
 
-def main(events=None):
+def main(events=None, initialize_logger=False):
     """Make a very simple display"""
 
-    init_logger()
+    if initialize_logger:
+        init_logger()
     logger = get_logger()
 
     board_data = process_arguments()
@@ -190,4 +191,4 @@ def process_board_data_events(board_data, event_list):
     return board_data
 
 if __name__ == '__main__':
-    main()
+    main(initialize_logger=True)
