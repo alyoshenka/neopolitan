@@ -40,10 +40,12 @@ def main(events=None, initialize_logger=False):
 
     # todo: make better
     if board_data.graphical:
+        logger.info('Initializing graphical display')
         from neopolitan.display.graphical_display import GraphicalDisplay
         board = Board(size)
         display = GraphicalDisplay(board=board)
     else:
+        logger.info('Initializing hardware display')
         from neopolitan.display.hardware_display import HardwareDisplay
         display = HardwareDisplay(WIDTH*HEIGHT)
         board_display = display.board_display
