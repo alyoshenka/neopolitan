@@ -15,7 +15,7 @@ from neopolitan.board_functions.board import Board
 # from board_functions.colors import OFF, ON
 from neopolitan.board_functions.board_data import default_board_data
 from neopolitan.writing.data_transformation import str_to_data
-from neopolitan.os_detection import on_pi
+from neopolitan.os_detection import on_pi, log_os
 from neopolitan.log import init_logger, get_logger # why tf is this erroring?
 # pylint: disable=wildcard-import
 from neopolitan.const import *
@@ -29,6 +29,7 @@ def main(events=None, initialize_logger=False):
     logger = get_logger()
 
     board_data = process_arguments()
+    log_os()
 
     width = WIDTH
     height = HEIGHT
