@@ -6,9 +6,6 @@
 # pylint: disable=too-many-branches
 # pylint: disable=import-outside-toplevel
 # pylint: disable=logging-fstring-interpolation
-# ToDo: fix this
-
-# todo: only import pygame if on graphical
 
 import getopt
 import sys
@@ -191,5 +188,4 @@ def process_board_data_events(board_data, event_list):
     return board_data
 
 if __name__ == '__main__': # todo: is this still true when running from the thread?
-    print('neopolitan is main')
     main(initialize_logger=True) # try False maybe? for testing

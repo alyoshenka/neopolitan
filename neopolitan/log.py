@@ -12,11 +12,8 @@ def init_logger(prep='logs/'):
     if not os.path.exists(prep):
         os.makedirs(prep)
     # todo: is all this formatting really necessary for a log file?
-    log_time = str(datetime.datetime.now()) \
-        .replace(" ", "_") \
-        .replace(".", "_") \
-        .replace(":", "-")
-    filename = f'{os.getcwd()}/{prep}neopolitan_{log_time}.txt'
+    log_time = str(datetime.datetime.now())
+    filename = f'{os.getcwd()}/{prep}neopolitan {log_time}.txt'
     logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
 
 def get_logger():
