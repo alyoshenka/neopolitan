@@ -97,19 +97,9 @@ def process_arguments():
                     board_data.message = val
                 elif arg in ('-g', '--graphical'):
                     if val == 'True':
-                        if on_pi():
-                            logger.warning('This code cannot be run in graphical' \
-                                            ' mode on a Raspberry Pi, setting graphical to False')
-                            board_data.graphical = False
-                        else:
-                            board_data.graphical = True
+                        board_data.graphical = True
                     elif val == 'False':
-                        if not on_pi():
-                            logger.warning('This code cannot be run in hardware mode when not run'\
-                            ' on a Raspberry Pi, setting graphical to True')
-                            board_data.graphical = True
-                        else:
-                            board_data.graphical = False
+                        board_data.graphical = False
                     else:
                         logger.warning(f'Could not parse "graphical" argument: {val}')
                 elif arg in ('-s', 'scroll'):
@@ -130,6 +120,16 @@ def process_arguments():
                         board_data.should_wrap = False
                     else:
                         logger.warning(f'Could not parse "wrap" argument: {val}')
+        # --- Verify OS for graphical/hardware
+        if on_pi() and board_data.graphical:
+            logger.warning('This code cannot be run in graphical' \
+                            ' mode on a Raspberry Pi, setting graphical to False')
+            board_data.graphical = False
+        if not on_pi() and not board_data.graphical:
+            logger.warning('This code cannot be run in hardware mode when not run'\
+            ' on a Raspberry Pi, setting graphical to True')
+            board_data.graphical = True
+        # --- Done verifying
         logger.info(f'message set to: {board_data.message}')
         logger.info(f'graphical set to: {board_data.graphical}')
         logger.info(f'scroll speed set to: {board_data.scroll_speed} ({board_data.scroll_wait})')
