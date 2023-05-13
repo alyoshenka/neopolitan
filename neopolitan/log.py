@@ -3,6 +3,7 @@
 import logging
 import datetime
 import os
+import sys
 
 def init_logger(prep='logs/'):
     """Set up the log file"""
@@ -14,7 +15,10 @@ def init_logger(prep='logs/'):
     # todo: is all this formatting really necessary for a log file?
     log_time = str(datetime.datetime.now())
     filename = f'{os.getcwd()}/{prep}neopolitan {log_time}.txt'
-    logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
+    if sys.version_info[1] > 7:
+        logging.basicConfig(filename=filename, encoding='utf=8', level=logging.DEBUG)
+    else:
+        logging.basicConfig(filename=filename, level=logging.DEBUG)
 
 def get_logger():
     """Get the package logger"""
