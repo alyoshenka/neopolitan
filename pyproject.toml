@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 [project]
 name = "neopolitan"
-version = "0.1.16"
+version = "0.1.17"
 authors = [
     { name = "alyo" },
 ]
@@ -17,7 +17,6 @@ classifiers = [
 ]
 dependencies = [
     "pygame ; platform_machine != 'armv7l'",
-    "neopixel ; platform_machine == 'armv7l'"
 ]
 [project.urls]
 "Homepage" = "https://github.com/alyoshenka/neopolitan"
