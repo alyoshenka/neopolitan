@@ -3,7 +3,7 @@ from threading import Thread
 from queue import Queue
 
 from neopolitan.neop import main
-from log import init_logger, get_logger
+from neopolitan.log import init_logger, get_logger
 
 # todo: doesn't this also need to listen tho??
 
