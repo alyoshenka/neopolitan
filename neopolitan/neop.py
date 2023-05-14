@@ -6,6 +6,7 @@
 # pylint: disable=too-many-branches
 # pylint: disable=import-outside-toplevel
 # pylint: disable=logging-fstring-interpolation
+# pylint: disable=too-many-locals
 
 import getopt
 import sys
