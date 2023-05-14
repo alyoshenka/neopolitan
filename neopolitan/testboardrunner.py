@@ -2,7 +2,8 @@ import time
 from threading import Thread
 from queue import Queue
 
-from neopolitan.neop import main, initialize_logger
+from neopolitan.neop import main
+from log import init_logger, get_logger
 
 # todo: doesn't this also need to listen tho??
 
@@ -11,7 +12,8 @@ def add_to_queue(q, e, t):
     q.put(e)
 
 def runner():
-    initialize_logger()
+    init_logger()
+    get_logger().info('Testing board runner')
 
     events = Queue()
     t = Thread(target=main, args=(events,))
