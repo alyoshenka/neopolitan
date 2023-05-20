@@ -29,6 +29,8 @@ def character_to_symbol(char):
 def frame_length(sym):
     """Returns the highest multiple of 8 above the largest index in the symbol array.
     This makes it so the frame has the correct length, since it should 'fill' all columns it uses"""
+    if sym is None or len(sym) == 0:
+        return 0
     if sym == 'space':
         return 8*2
     sym_len = len(sym)
