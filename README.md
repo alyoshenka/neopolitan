@@ -34,7 +34,11 @@ Given that access to hardware boards can be constrictive and testing can be diff
   main(events=q) # Run main with the specified events
   ```
 
-https://github.com/alyoshenka/neopolitan/assets/38815390/9dba7090-793c-41fd-b42f-0a4ea92117b7
+
+https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b-34b49878c55f
+
+
+
 
 
   
