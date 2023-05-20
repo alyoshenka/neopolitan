@@ -78,7 +78,7 @@ see `data_transformation.py`
         1. Set `frame[val]` to be a valid `color`
     1. Return `frame`
 
-## Defined Characters
+## Supported Characters
 - `[a-z]`
 - `[A-Z]`
 - `[0-9]`

@@ -33,8 +33,8 @@ Given that access to hardware boards can be constrictive and testing can be diff
   from neopolitan.neop import main
   main(events=q) # Run main with the specified events
   ```
-  - See []() for a list of supported characters
-  
+  - See [Supported Characters](https://github.com/alyoshenka/neopolitan/blob/main/neopolitan/writing/ReadMe.md#defined-characters) for a list of supported characters
+
 https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b-34b49878c55f
 
 
