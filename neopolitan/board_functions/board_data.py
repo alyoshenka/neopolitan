@@ -28,6 +28,7 @@ class BoardData: # todo: DisplayData?
 
     def set_scroll_wait(self, timer):
         """Set scroll speed to a user-defined value"""
+        # todo: handle ints too
         assert isinstance(timer, float), f'A float must be provided: {timer}'
         self.scroll_wait = timer
         self.scroll_speed = 'user-defined'
