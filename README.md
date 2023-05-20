@@ -33,6 +33,11 @@ Given that access to hardware boards can be constrictive and testing can be diff
   from neopolitan.neop import main
   main(events=q) # Run main with the specified events
   ```
+
+https://github.com/alyoshenka/neopolitan/assets/38815390/9dba7090-793c-41fd-b42f-0a4ea92117b7
+
+
+  
 - See [this code](https://github.com/alyoshenka/neo/blob/main/neo/neopolitan_handler.py) for an example of how to send live updates in the package
 
 ## Command Line Arguments
