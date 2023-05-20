@@ -33,7 +33,8 @@ Given that access to hardware boards can be constrictive and testing can be diff
   from neopolitan.neop import main
   main(events=q) # Run main with the specified events
   ```
-
+  - See []() for a list of supported characters
+  
 https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b-34b49878c55f
 
 
@@ -50,5 +51,3 @@ https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b
   - Controls how quickly the display scrolls across the screen
 - `--wrap/-w {True/False}`
   - Determines whether the display should "wrap around" when it gets to the end, or just show a blank screen
-
-todo: command line examples (w/ vids?)
