@@ -89,6 +89,7 @@ symbols = {
     "}": CLOSECURLY,
     '"': DOUBLEQUOTE,
     "'": SINGLEQUOTE,
+    ",": COMMA,
 }
 
 numbers = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE]
