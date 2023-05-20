@@ -11,7 +11,7 @@ Given that access to hardware boards can be constrictive and testing can be diff
 `[python3 -m] pip install neopolitan`
 
 ## Usage
-*Make sure to exit the program by pressing the window close "X", instead of `ctrl+c`
+*Make sure to exit the program by pressing the window close "X", instead of `ctrl+c`*
 - To run the program
   ```py
   from neopolitan.neop import main as main_function
@@ -34,14 +34,9 @@ Given that access to hardware boards can be constrictive and testing can be diff
   main(events=q) # Run main with the specified events
   ```
 
-
 https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b-34b49878c55f
 
 
-
-
-
-  
 - See [this code](https://github.com/alyoshenka/neo/blob/main/neo/neopolitan_handler.py) for an example of how to send live updates in the package
 
 ## Command Line Arguments
