@@ -38,6 +38,12 @@ Given that access to hardware boards can be constrictive and testing can be diff
 https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b-34b49878c55f
 
 
+https://github.com/alyoshenka/neopolitan/assets/38815390/e9cae65b-2c18-4844-886f-61a2a319c42a
+
+
+
+
+
 - See [this code](https://github.com/alyoshenka/neo/blob/main/neo/neopolitan_handler.py) for an example of how to send live updates in the package
 
 ## Command Line Arguments
