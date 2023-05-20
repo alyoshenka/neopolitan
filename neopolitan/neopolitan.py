@@ -4,6 +4,10 @@ import time
 import getopt
 import sys
 
+# pylint: disable=too-many-nested-blocks
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+
 from neopolitan.board_functions.board import Board
 from neopolitan.writing.data_transformation import str_to_data
 from neopolitan.board_functions.board_data import default_board_data
@@ -33,7 +37,7 @@ def process_arguments():
                     elif val == 'False':
                         board_data.graphical = False
                     else:
-                        logger.warning(f'Could not parse "graphical" argument: {val}')
+                        logger.warning('Could not parse "graphical" argument: %s', val)
                 elif arg in ('-s', 'scroll'):
                     if val in ('slow', 'medium', 'fast'):
                         board_data.scroll_speed = val
@@ -44,14 +48,14 @@ def process_arguments():
                         else: # fast
                             board_data.scroll_wait = SCROLL_SLOW
                     else:
-                        logger.warning(f'Invalid scroll speed: {val}')
+                        logger.warning('Invalid scroll speed: %s', val)
                 elif arg in ('-w', 'wrap'):
                     if val == 'True':
                         board_data.should_wrap = True
                     elif val == 'False':
                         board_data.should_wrap = False
                     else:
-                        logger.warning(f'Could not parse "wrap" argument: {val}')
+                        logger.warning('Could not parse "wrap" argument: %s', val)
         # --- Verify OS for graphical/hardware
         if on_pi() and board_data.graphical:
             logger.warning('This code cannot be run in graphical' \
@@ -62,13 +66,13 @@ def process_arguments():
             ' on a Raspberry Pi, setting graphical to True')
             board_data.graphical = True
         # --- Done verifying
-        logger.info(f'message set to: {board_data.message}')
-        logger.info(f'graphical set to: {board_data.graphical}')
-        logger.info(f'scroll speed set to: {board_data.scroll_speed} ({board_data.scroll_wait})')
-        logger.info(f'wrap set to: {board_data.should_wrap}')
+        logger.info('message set to: %s', board_data.message)
+        logger.info('graphical set to: %s', board_data.graphical)
+        logger.info('scroll speed set to: %s (%s)', board_data.scroll_speed, board_data.scroll_wait)
+        logger.info('wrap set to: %s', {board_data.should_wrap})
 
     except getopt.error as err:
-        logger.error(f'getopt error: {err}')
+        logger.error('getopt error: %s', err)
 
     return board_data
 
@@ -98,9 +102,9 @@ def process_board_data_events(board_data, event_list):
             try:
                 speed = float(speed)
                 board_data.set_scroll_wait(speed)
-                logger.info(f'set speed: {speed}')
+                logger.info('set speed: %s', speed)
             except ValueError:
-                logger.warning(f'Cannot parse speed: {speed}')
+                logger.warning('Cannot parse speed: %s', speed)
     elif first == 'wrap':
         try:
             wrap = event_list[1]
@@ -144,11 +148,13 @@ class Neopolitan:
         # todo: make better
         if self.board_data.graphical:
             get_logger().info('Initializing graphical display')
+            # pylint: disable=import-outside-toplevel
             from neopolitan.display.graphical_display import GraphicalDisplay
             self.board = Board(self.size)
             self.display = GraphicalDisplay(board=self.board)
         else:
             get_logger().info('Initializing hardware display')
+            # pylint: disable=import-outside-toplevel
             from neopolitan.display.hardware_display import HardwareDisplay
             self.display = HardwareDisplay(WIDTH*HEIGHT)
             self.board_display = self.display.board_display
@@ -162,20 +168,20 @@ class Neopolitan:
             # todo: make better
             while self.events and not self.events.empty():
                 event = self.events.get()
-                logger.info(f'event: {event}')
+                logger.info('event: %s', event)
                 event_list = event.split()
                 first = event_list[0]
                 if first == 'exit':
                     return
                 if first == 'say':
-                    logger.info(f'say: {event}')
+                    logger.info('say: %s', event)
                     # todo: better handling: this is unintuitive
                     message = ' '
                     for word in event_list[1:]:
                         message += word + ' '
                     logger.info(message)
                     self.board.set_data(str_to_data(message))
-                    logger.info(f'set message: {message}')
+                    logger.info('set message: %s', message)
                 else: # try board data events
                     self.board_data = process_board_data_events(self.board_data, event_list)
                 # todo: error handling

@@ -1,15 +1,5 @@
 """Main application function"""
 
-# pylint: disable=fixme
-# pylint: disable=too-many-nested-blocks
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
-# pylint: disable=import-outside-toplevel
-# pylint: disable=logging-fstring-interpolation
-# pylint: disable=too-many-locals
-
-
-
 from neopolitan.os_detection import log_os
 from neopolitan.log import init_logger
 from neopolitan.neopolitan import Neopolitan

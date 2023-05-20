@@ -1,7 +1,7 @@
 """Tests various ways that board data is manipulated"""
 
 from neopolitan.board_functions.board_data import default_board_data
-from neopolitan.neop import process_board_data_events
+from neopolitan.neopolitan import process_board_data_events
 from neopolitan.const import SCROLL_FAST
 
 def test_board_data_event_processing():
