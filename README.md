@@ -53,6 +53,7 @@ https://github.com/alyoshenka/neopolitan/assets/38815390/e9cae65b-2c18-4844-886f
 
 ## Command Line Arguments
 
+[*Deprecated*]
 **Note: This code only works from source, NOT the package install**
 
 From the top-level `neopolitan/` directory: `python[3] neopolitan/neop.py {args}`

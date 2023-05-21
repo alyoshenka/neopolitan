@@ -1,5 +1,8 @@
 """Main application function"""
 
+# pylint: disable=too-many-nested-blocks
+# pylint: disable=too-many-branches
+
 import getopt
 import sys
 

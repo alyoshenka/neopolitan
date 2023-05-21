@@ -2,7 +2,7 @@
 Main application code for displaying a board
 
 Why is this file named 'naples.py'?
-    To reduce the confusion of naming it 'neopolitan.py', I tried to find a synonym. 
+    To reduce the confusion of naming it 'neopolitan.py', I tried to find a synonym.
     Neopolitan/Neapolitan is a resident of Naples, Italy.
 """
 
