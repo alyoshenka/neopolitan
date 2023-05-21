@@ -1,7 +1,7 @@
 """Demo some functionalities of the board"""
 
 from neopolitan.log import init_logger
-from neopolitan.neopolitan import Neopolitan
+from neopolitan.naples import Neopolitan
 from neopolitan.board_functions.board_data import default_board_data
 
 # pylint: disable=anomalous-backslash-in-string

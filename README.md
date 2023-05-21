@@ -37,11 +37,16 @@ Given that access to hardware boards can be constrictive and testing can be diff
 
 https://github.com/alyoshenka/neopolitan/assets/38815390/1e98261b-8dfb-48e3-943b-34b49878c55f
 
+- To run some demos
+  ```py
+  from neopolitan.demos import *
+
+  display('This displays a message that cannot be updated')
+  # Execution will return here when the display is closed
+  display_all() # display all defined symbols
+  ```
 
 https://github.com/alyoshenka/neopolitan/assets/38815390/e9cae65b-2c18-4844-886f-61a2a319c42a
-
-
-
 
 
 - See [this code](https://github.com/alyoshenka/neo/blob/main/neo/neopolitan_handler.py) for an example of how to send live updates in the package
@@ -50,7 +55,7 @@ https://github.com/alyoshenka/neopolitan/assets/38815390/e9cae65b-2c18-4844-886f
 
 **Note: This code only works from source, NOT the package install**
 
-`python[3] neopolitan/main.py {args}`
+From the top-level `neopolitan/` directory: `python[3] neopolitan/neop.py {args}`
 - `--message/-m {message_to_display}`
   - Displays the given message on the board (enclose in quotes if multiple words)
 - `--scroll-speed/-s {slow/medium/fast}`
