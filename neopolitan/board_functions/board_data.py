@@ -33,4 +33,4 @@ class BoardData: # todo: DisplayData?
         self.scroll_wait = timer
         self.scroll_speed = 'user-defined'
 
-default_board_data = BoardData('hello, world', True, 'medium', SCROLL_MED, True)
+default_board_data = BoardData('hello, world', False, 'medium', SCROLL_MED, True)
