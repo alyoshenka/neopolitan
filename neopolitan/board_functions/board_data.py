@@ -1,6 +1,7 @@
 """Holds data for displaying a board"""
 from dataclasses import dataclass
 from neopolitan.const import SCROLL_SLOW, SCROLL_MED, SCROLL_FAST
+from neopolitan.os_detection import on_pi
 
 @dataclass
 class BoardData: # todo: DisplayData?
@@ -33,4 +34,4 @@ class BoardData: # todo: DisplayData?
         self.scroll_wait = timer
         self.scroll_speed = 'user-defined'
 
-default_board_data = BoardData('hello, world', True, 'medium', SCROLL_MED, True)
+default_board_data = BoardData('hello, world', not on_pi(), 'medium', SCROLL_MED, True)
