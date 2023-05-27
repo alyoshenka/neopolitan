@@ -70,3 +70,9 @@ def str_to_data(msg, color=ON, add_space=4):
         data = data + arr + line
     data += line*add_space
     return data
+
+def color_list_to_data(arr):
+    data = []
+    for msg, col in arr:
+        data += str_to_data(msg, color=col, add_space=0)
+    return data
