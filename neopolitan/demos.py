@@ -3,13 +3,15 @@
 from neopolitan.log import init_logger
 from neopolitan.naples import Neopolitan
 from neopolitan.board_functions.board_data import default_board_data
-
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
+from neopolitan.board_functions.colors import *
 # pylint: disable=anomalous-backslash-in-string
 
 LOWER = 'abcdefghijklmnopqrstuvwxyz'
 UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NUMBERS = '0123456789'
-SYMBOLS = '$ % ↑ ↓ ( ) - . , : = ~ ! @ & * ? < > ; | \{ \} " \''
+SYMBOLS = '$ % ↑ ↓ ( ) - . , : = ~ ! @ & * ? < > ; | { } " \''
 
 def display(msg):
     """Display a message on the board"""
@@ -19,7 +21,7 @@ def display(msg):
     board_data = default_board_data
     board_data.message = msg
 
-    board_data.scroll_fast()
+    # board_data.scroll_fast()
 
     neop = Neopolitan(board_data=board_data)
     neop.loop()
@@ -44,3 +46,16 @@ def display_all_numbers():
 def display_all_symbols():
     """Display all symbols"""
     display(SYMBOLS)
+
+def color_demo():
+    """Displays a rainbow message"""
+    msg = [
+        ('-', WHITE),
+        ('-', RED),
+        ('-', ORANGE),
+        ('-', YELLOW),
+        ('-', GREEN),
+        ('-', BLUE),
+        ('-', PURPLE),
+    ]
+    display(msg)
