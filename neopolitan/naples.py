@@ -13,7 +13,7 @@ import time
 # pylint: disable=too-many-instance-attributes
 
 from neopolitan.board_functions.board import Board
-from neopolitan.writing.data_transformation import str_to_data
+from neopolitan.writing.data_transformation import dispatch_str_or_lst, str_to_data
 from neopolitan.board_functions.board_data import default_board_data
 from neopolitan.log import get_logger
 from neopolitan.const import WIDTH, HEIGHT
@@ -66,7 +66,6 @@ def process_board_data_events(board_data, event_list):
 
     return board_data
 
-
 class Neopolitan:
     """Main application class for displaying a board"""
     def __init__(self, board_data=None, events=None):
@@ -79,9 +78,8 @@ class Neopolitan:
         self.board_display = None
 
         self.events = events
-
         self.init_board()
-        self.board.set_data(str_to_data(board_data.message))
+        self.board.set_data(dispatch_str_or_lst(board_data.message))
 
     def __del__(self):
         del self.display

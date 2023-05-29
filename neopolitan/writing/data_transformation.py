@@ -48,7 +48,7 @@ def frame_length(sym):
     return ret
 
 # Todo: dictionary: idx=color instead?
-def symbol_to_array(sym, color=(255,255,255), off=None):
+def symbol_to_array(sym, color=ON, off=None):
     """Takes a defined symbol and returns an array where the symbol
         is defined by indices of 'color' and 'off' values are None"""
     frame = [off for i in range(frame_length(sym))]
@@ -70,3 +70,21 @@ def str_to_data(msg, color=ON, add_space=4):
         data = data + arr + line
     data += line*add_space
     return data
+
+def color_list_to_data(arr):
+    """Converts a list of (message, color) objects into a colored board message"""
+    data = []
+    for msg, col in arr:
+        data += str_to_data(msg, color=col, add_space=0)
+    return data
+
+def dispatch_str_or_lst(msg):
+    """Dispatches given the input to either the basic-string or colored-string data makers"""
+    # ToDo: this is not the most elegant system ever
+    if isinstance(msg, str):
+        return str_to_data(msg)
+    if isinstance(msg, list):
+        if len(msg) > 0:
+            if isinstance(msg[0], tuple):
+                return color_list_to_data(msg)
+    return []

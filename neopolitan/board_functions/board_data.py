@@ -2,6 +2,9 @@
 from dataclasses import dataclass
 from neopolitan.const import SCROLL_SLOW, SCROLL_MED, SCROLL_FAST
 from neopolitan.os_detection import on_pi
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
+from neopolitan.board_functions.colors import *
 
 @dataclass
 class BoardData: # todo: DisplayData?
@@ -34,4 +37,18 @@ class BoardData: # todo: DisplayData?
         self.scroll_wait = timer
         self.scroll_speed = 'user-defined'
 
-default_board_data = BoardData('hello, world', not on_pi(), 'medium', SCROLL_MED, True)
+default_message = [
+    ('              hello, and welcome to ', WHITE),
+    ('n', RED),
+    ('e', ORANGE),
+    ('o', YELLOW),
+    ('p', GREEN),
+    ('o', BLUE),
+    ('l', PURPLE),
+    ('i', RED),
+    ('t', ORANGE),
+    ('a', YELLOW),
+    ('n', GREEN),
+    ('!', WHITE)
+]
+default_board_data = BoardData(default_message, not on_pi(), 'medium', SCROLL_MED, True)
