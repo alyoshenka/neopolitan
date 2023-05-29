@@ -17,7 +17,12 @@ class BoardData: # todo: DisplayData?
 
     def copy(self):
         """Returns a copy of this object"""
-        return BoardData(self.message, self.graphical, self.scroll_speed, self.scroll_wait, self.should_wrap)
+        return BoardData(\
+            self.message, \
+            self.graphical, \
+            self.scroll_speed, \
+            self.scroll_wait, \
+            self.should_wrap)
 
     def scroll_fast(self):
         """Set scroll speed to fast"""
