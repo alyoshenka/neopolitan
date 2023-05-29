@@ -20,7 +20,7 @@ def display(msg, events=None):
 
     init_logger()
 
-    board_data = default_board_data
+    board_data = default_board_data.copy()
     board_data.message = msg
 
     # board_data.scroll_fast()
