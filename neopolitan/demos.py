@@ -13,7 +13,9 @@ UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NUMBERS = '0123456789'
 SYMBOLS = '$ % ↑ ↓ ( ) - . , : = ~ ! @ & * ? < > ; | { } " \''
 
-def display(msg):
+# todo: always passing events seems bad
+
+def display(msg, events=None):
     """Display a message on the board"""
 
     init_logger()
@@ -23,31 +25,31 @@ def display(msg):
 
     # board_data.scroll_fast()
 
-    neop = Neopolitan(board_data=board_data)
+    neop = Neopolitan(board_data=board_data, events=events)
     neop.loop()
     del neop
 
-def display_all():
+def display_all(events=None):
     """Display all defined characters"""
-    display(f'    {LOWER} {UPPER} {NUMBERS} {SYMBOLS}')
+    display(f'    {LOWER} {UPPER} {NUMBERS} {SYMBOLS}', events=events)
 
-def display_all_lowercase_letters():
+def display_all_lowercase_letters(events=None):
     """Display all lowercase letters"""
-    display(LOWER)
+    display(LOWER, events=events)
 
-def display_all_uppercase_letters():
+def display_all_uppercase_letters(events=None):
     """Display all uppercase letters"""
-    display(UPPER)
+    display(UPPER, events=events)
 
-def display_all_numbers():
+def display_all_numbers(events=None):
     """Display all numbers"""
-    display(NUMBERS)
+    display(NUMBERS, events=events)
 
-def display_all_symbols():
+def display_all_symbols(events=None):
     """Display all symbols"""
-    display(SYMBOLS)
+    display(SYMBOLS, events=events)
 
-def color_demo():
+def color_demo(events=None):
     """Displays a rainbow message"""
     msg = [
         ('-', WHITE),
@@ -58,4 +60,4 @@ def color_demo():
         ('-', BLUE),
         ('-', PURPLE),
     ]
-    display(msg)
+    display(msg, events=events)
