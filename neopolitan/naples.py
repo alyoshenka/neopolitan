@@ -113,6 +113,7 @@ class Neopolitan:
                 event_list = event.split()
                 first = event_list[0]
                 if first == 'exit':
+                    self.display.should_exit = True
                     return
                 if first == 'say':
                     logger.info('say: %s', event)
