@@ -13,15 +13,15 @@ import time
 from threading import Thread
 from queue import Queue
 # pylint: disable=import-error
-from neop import main as default
-from demos import \
+from neopolitan.neop import main as default
+from neopolitan.demos import \
     display_all, \
     display_all_lowercase_letters, \
     display_all_uppercase_letters, \
     display_all_numbers, \
     display_all_symbols, \
     color_demo
-from log import get_logger
+from neopolitan.log import get_logger
 
 # todo: is global var ok?
 NEOPOLITAN_THREAD = None
