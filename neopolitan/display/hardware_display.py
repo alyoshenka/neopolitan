@@ -19,7 +19,7 @@ class HardwareDisplay(Display):
         self.size = size
 
         # Initialize pixels
-        self.pixels = neopixel.NeoPixel(pinout.D10, self.size, brightness=0.01, auto_write=False)
+        self.pixels = neopixel.NeoPixel(pinout.D12, self.size, brightness=0.01, auto_write=False)
         # Initialize board
         self.board_display = HardwareBoardDisplay(Board(size), self.pixels, size)
 
