@@ -16,10 +16,15 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "pygame ; platform_machine != 'armv7l'",
-    "rpi_ws281x; platform_machine == 'armv7l'",
+    "pygame ; platform_machine == 'x86_64'",
+
+    "rpi_ws281x ; platform_machine == 'armv7l'",
     "adafruit-circuitpython-neopixel ; platform_machine == 'armv7l'",
-    "RPi.GPIO ; platform_machine == 'armv7l'"
+    "RPi.GPIO ; platform_machine == 'armv7l'",
+    
+    "rpi_ws281x ; platform_machine == 'aarch64'",
+    "adafruit-circuitpython-neopixel ; platform_machine == 'aarch64'",
+    "RPi.GPIO ; platform_machine == 'aarch64'"
 ]
 [project.urls]
 "Homepage" = "https://github.com/alyoshenka/neopolitan"
