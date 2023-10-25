@@ -5,7 +5,8 @@ from neopolitan.log import get_logger
 
 def on_pi():
     """Is this code being run on a 32 bit Raspberry Pi?"""
-    return (platform.machine()).strip() == 'armv7l'
+    return (platform.machine()).strip() == 'armv7l' \
+        or (platform.machine()).strip() == 'aarch64'
 
 def log_os():
     """Log whether this code is being run on a Pi"""
